@@ -12,6 +12,7 @@ import ApartmentIndex from "./pages/ApartmentIndex"
 import ApartmentShow from "./pages/ApartmentShow"
 import ApartmentNew from "./pages/ApartmentNew"
 import ApartmentEdit from "./pages/ApartmentEdit"
+import ItemNew from "./pages/ItemNew"
 
 
 class App extends React.Component {
@@ -24,33 +25,59 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    this.apartmentIndex()
+    this.itemIndex()
   }
 
-  apartmentIndex = () => {
-    fetch("http://localhost:3000/apartments")
+  // apartmentIndex = () => {
+  //   fetch("http://localhost:3000/apartments")
+  //   .then(response => {
+  //     return response.json()
+  //   })
+  //   .then(apartmentsArray => {
+  //     this.setState({ apartments: apartmentsArray})
+  //   })
+  //   .catch(errors => {
+  //     console.log("index errors:", errors)
+  //   })
+  // }
+
+  itemIndex = () => {
+    fetch("http://localhost:3000/items")
     .then(response => {
       return response.json()
     })
-    .then(apartmentsArray => {
-      this.setState({ apartments: apartmentsArray})
+    .then(itemsArray => {
+      this.setState({ items: itemsArray})
     })
     .catch(errors => {
       console.log("index errors:", errors)
     })
   }
 
-  createNewApartment = (newApartment) => {
-    fetch("http://localhost:3000/apartments", {
-      body:JSON.stringify(newApartment),
+  // createNewApartment = (newApartment) => {
+  //   fetch("http://localhost:3000/apartments", {
+  //     body:JSON.stringify(newApartment),
+  //     headers:{
+  //       "Content-Type": "application/json"
+  //     },
+  //     method:"POST"
+  //   })
+  //   .then(response => response.json())
+  //   .then(payload => this.apartmentIndex())
+  //   .catch(errors => console.log("apartment create errors:", errors))
+  //  }
+
+   createNewItem = (newItem) => {
+    fetch("http://localhost:3000/items", {
+      body:JSON.stringify(newItem),
       headers:{
         "Content-Type": "application/json"
       },
       method:"POST"
     })
     .then(response => response.json())
-    .then(payload => this.apartmentIndex())
-    .catch(errors => console.log("apartment create errors:", errors))
+    .then(payload => this.itemIndex())
+    .catch(errors => console.log("Item create errors:", errors))
    }
 
    updateApartment = (editapartment, id) => {
@@ -96,6 +123,8 @@ class App extends React.Component {
             let apartment = this.state.apartments.find(apartment => apartment.id === +id)
             return <ApartmentEdit updateApartment={ this.updateApartment } apartment={ apartment } />
           }} /> 
+        <Route path="/itemnew" render={ (props)  => <ItemNew createNewItem={ this.createNewItem } /> } />  
+
       </Switch>
 
       <Footer />

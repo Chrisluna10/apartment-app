@@ -16,6 +16,7 @@ class Header extends React.Component{
         <a className="active" href="/">Home</a>
         <a href="/apartmentsindex">Apartments</a>
         <a href="#contact">Contact</a>
+        { logged_in && <NavLink to="/itemnew">Add Item</NavLink> }
        { logged_in && <NavLink to="/apartmentsnew">Add Apartment</NavLink> }
         { logged_in  &&
             <div>

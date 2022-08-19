@@ -3,25 +3,25 @@ import {NavLink} from 'react-router-dom'
 import {Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button} from 'reactstrap'
 
-class ApartmentsShow extends Component {
+class ItemShow extends Component {
   render() {
-      console.log(this.props.apartment)
-    let {apartment} = this.props
+      console.log(this.props.item)
+    let {item} = this.props
     return (
         
       <div className="page-body" >
           
-      {apartment && 
+      {item && 
           <Card className="card-show">
           <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
           <CardBody>
-            <CardTitle tag="h5">Apartment number {apartment.id} </CardTitle>
-            <CardSubtitle tag="h6" className="mb-2 text-muted">{apartment.street}</CardSubtitle>
+            <CardTitle tag="h5">item number {item.id} </CardTitle>
+            <CardSubtitle tag="h6" className="mb-2 text-muted">{item.street}</CardSubtitle>
             <CardText>
 
             </CardText>
-            <NavLink to={`/apartmentsedit/${apartment.id}`}>
-            <Button>Edit Apartment</Button>
+            <NavLink to={`/itemsedit/${item.id}`}>
+            <Button>Edit item</Button>
             </NavLink>
           </CardBody>
         </Card>
@@ -30,4 +30,4 @@ class ApartmentsShow extends Component {
   )
 }
 }
-export default ApartmentsShow
+export default ItemShow
