@@ -4,14 +4,18 @@ import {
   CardContent,
   Grid,
   Typography,
+  Button
 } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import Car from "../../Assets/Car.png"
+import { useParams } from "react-router-dom"
 
-export default function Profile({ info }) {
+export default function Profile() {
   const [items, setItems] = useState([])
   const navigate = useNavigate()
+  const params = useParams()
+ 
 
   function userItems() {
     fetch("http://localhost:3000/user_index", {
@@ -31,7 +35,7 @@ export default function Profile({ info }) {
 
   const handleClick = (item) => {
     navigate({
-      pathname: `/item/${item.id}`,
+      pathname: `item/${item.id}`,
     })
   }
 

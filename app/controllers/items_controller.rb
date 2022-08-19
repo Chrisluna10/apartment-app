@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
     items = current_user.items.all
     render json: items
   end
-  
+
   def index 
     items = Item.all
     render json: items
@@ -44,14 +44,14 @@ def update
     render json: item
 end
 
-def destroy
-  @item.destroy
-
-  respond_to do |format|
-    format.html { redirect_to items_url, notice: "Item was successfully destroyed." }
-    format.json { head :no_content }
+ def destroy
+    item = Item.find(params[:id])
+    if current_user.id == item.user_id
+      item.destroy
+    else
+      head 401
+    end
   end
-end
 
 private
 def item_params

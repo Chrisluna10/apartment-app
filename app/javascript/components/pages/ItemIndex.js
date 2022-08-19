@@ -62,9 +62,7 @@ export default function ItemIndex(props) {
                     justifyContent="space-between"
                   >
                     <Typography>${item.price}</Typography>
-                    {/* <Typography>{item.miles} Miles</Typography> */}
                   </Grid>
-                  {/* <Typography>{item.location}</Typography> */}
                 </Grid>
               </CardActionArea>
             </Card>

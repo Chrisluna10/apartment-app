@@ -11,18 +11,10 @@ import {
 import { useNavigate } from "react-router"
 import { useParams } from "react-router-dom"
 
-export default function Item(props) {
+export default function UserItemShow(props) {
   const [item, setItem] = useState({})
   const navigate = useNavigate()
   const params = useParams()
-
-   const {
-    logged_in,
-    current_user,
-    new_user_route,
-    sign_in_route,
-    sign_out_route,
-  } = props
 
   function fetchItem() {
     fetch(`http://localhost:3000/items/${params.id}`, {
@@ -40,8 +32,8 @@ export default function Item(props) {
     fetchItem()
   }, [])
 
-  function deleteItem(item) {
-    fetch(`http://localhost:3000/items/${item.id}`, {
+  function deleteItem() {
+    fetch(`http://localhost:3000/items/${params.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -79,6 +71,9 @@ export default function Item(props) {
               </Grid>
               <Typography>{item.description}</Typography>
             </Grid>
+            <Button onClick={() => deleteItem()}>
+        <Typography>Delete Item</Typography>
+      </Button>
           </Grid>
         )}
       </Grid>
