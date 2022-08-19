@@ -19,28 +19,13 @@ export default function App(props) {
   //   sign_out_route,
   // } = props
 
-  function user() {
-    fetch("http://localhost:3000/current_user", {
-      method: "GET",
-      credentials: "include",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-  }
-
-  useEffect(() => {
-    user()
-  }, [])
+ 
 
   return (
     <Router>
       <Header {...props} />
       <Routes>
-        <Route path="/" element={Home} />
+        <Route path="/" element={<Home />} />
         <Route
           path="/itemindex"
           element={<ItemIndex {...props} items={items} />}

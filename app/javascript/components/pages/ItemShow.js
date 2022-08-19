@@ -11,25 +11,24 @@ import {
 import { useNavigate } from "react-router"
 import { useParams } from "react-router-dom"
 
-
 export default function Item(props) {
   const [item, setItem] = useState({})
   const navigate = useNavigate()
   const params = useParams()
 
-    function fetchItem() {
-      fetch(`http://localhost:3000/items/${params.id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((item) => setItem(item))
-        .catch((err) => console.log(err))
-    }
+  function fetchItem() {
+    fetch(`http://localhost:3000/items/${params.id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((item) => setItem(item))
+      .catch((err) => console.log(err))
+  }
 
-    useEffect(() => {
+  useEffect(() => {
     fetchItem()
   }, [])
 
@@ -68,17 +67,17 @@ export default function Item(props) {
                 direction="row"
                 justifyContent="space-between"
               > */}
-                <Typography>${item.price}</Typography>
-                {/* <Typography>{item.miles} Miles</Typography> */}
-              </Grid>
-              {/* <Typography>{item.location}</Typography> */}
+              <Typography>${item.price}</Typography>
+              {/* <Typography>{item.miles} Miles</Typography> */}
             </Grid>
+            {/* <Typography>{item.location}</Typography> */}
+          </Grid>
           // </Grid>
         )}
       </Grid>
       <Button onClick={() => deleteItem()}>
-              <Typography>Delete Item</Typography>
-            </Button>
+        <Typography>Delete Item</Typography>
+      </Button>
     </Grid>
   )
 }

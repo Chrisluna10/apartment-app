@@ -1,12 +1,15 @@
-import { Card, CardActionArea, CardContent, Grid, Typography } from "@mui/material"
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  Grid,
+  Typography,
+} from "@mui/material"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import Car from "../../Assets/Car.png"
 
-
-
-
-export default function Profile({info}) {
+export default function Profile({ info }) {
   const [items, setItems] = useState([])
   const navigate = useNavigate()
 
@@ -26,11 +29,11 @@ export default function Profile({info}) {
     userItems()
   }, [])
 
-const handleClick = (item) => {
-  navigate({
-    pathname: `/item/${item.id}`,
-  })
-}
+  const handleClick = (item) => {
+    navigate({
+      pathname: `/item/${item.id}`,
+    })
+  }
 
   return (
     <Grid container direction="row" justifyContent="center">

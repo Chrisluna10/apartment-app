@@ -1,8 +1,7 @@
 import { Button, Grid, TextField } from "@mui/material"
 import { Formik } from "formik"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import React from "react"
-
 
 export default function ItemNew() {
   const navigate = useNavigate()
@@ -17,8 +16,8 @@ export default function ItemNew() {
         item: values,
       }),
     })
-    .then((res) => res.json())
-    // .then((res) => console.log(res))
+      .then((res) => res.json())
+      // .then((res) => console.log(res))
       .then((response) => {
         if (response.status === 401) {
           alert("not added")
@@ -35,10 +34,10 @@ export default function ItemNew() {
       <Grid container item direction="column" alignItems="center" spacing={5}>
         <Formik
           initialValues={{
-              name: "",
-              category: "",
-              price: "",
-              description: ""
+            name: "",
+            category: "",
+            price: "",
+            description: "",
           }}
           onSubmit={(values) => addItem(values)}
         >

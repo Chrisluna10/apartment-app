@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { NavLink } from 'react-router-dom'
+import { NavLink } from "react-router-dom"
 import { useNavigate, useParams } from "react-router"
 import {
   Typography,
@@ -42,9 +42,7 @@ export default function ItemIndex(props) {
         {items.map((item) => {
           return (
             <Card key={item.id} sx={{ maxWidth: 325, padding: 1.5 }}>
-              <CardActionArea 
-              onClick={() => handleClick(item)}
-              >
+              <CardActionArea onClick={() => handleClick(item)}>
                 <img src={`${Car}`} height={170} />
                 <CardContent>
                   <Typography>{item.name}</Typography>
