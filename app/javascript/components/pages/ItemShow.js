@@ -33,17 +33,17 @@ export default function Item(props) {
     fetchItem()
   }, [])
 
-  // function deleteItem() {
-  //   fetch(`http://localhost:3000/items/${params.id}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((item) => setItem(item))
-  //     .catch((err) => console.log(err))
-  // }
+  function deleteItem() {
+    fetch(`http://localhost:3000/items/${params.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((item) => setItem(item))
+      .catch((err) => console.log(err))
+  }
 
   return (
     <Grid container direction="row" justifyContent="center">

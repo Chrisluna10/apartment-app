@@ -1,4 +1,10 @@
 class ItemsController < ApplicationController
+
+  def userindex
+    items = current_user.items.all
+    render json: items
+  end
+  
   def index 
     items = Item.all
     render json: items
