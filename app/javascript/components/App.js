@@ -9,6 +9,7 @@ import ItemNew from "./pages/ItemNew"
 import Item from "./pages/ItemShow"
 import Profile from "./pages/Profile"
 import UserItemShow from "./pages/UserItemShow"
+import ItemEdit from "./pages/ItemEdit"
 
 export default function App(props) {
   const [items, setItems] = useState([])
@@ -35,6 +36,7 @@ export default function App(props) {
         <Route path="/itemnew" element={<ItemNew {...props} />} />
         <Route path="profile" element={<Profile />} />
         <Route path="profile/item/:id" element={<UserItemShow />} />
+        <Route path="edititem/:id" element={<ItemEdit />} />
       </Routes>
       <Footer />
     </Router>

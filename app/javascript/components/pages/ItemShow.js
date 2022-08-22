@@ -33,24 +33,13 @@ export default function Item(props) {
     })
       .then((res) => res.json())
       .then((item) => setItem(item))
+      .then((res) => console.log(res))
       .catch((err) => console.log(err))
   }
 
   useEffect(() => {
     fetchItem()
   }, [])
-
-  function deleteItem(item) {
-    fetch(`http://localhost:3000/items/${item.id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      // .then((item) => setItem(item))
-      .catch((err) => console.log(err))
-  }
 
   return (
     <Grid container direction="row" justifyContent="center">

@@ -32,6 +32,7 @@ export default function UserItemShow(props) {
     fetchItem()
   }, [])
 
+
   function deleteItem() {
     fetch(`http://localhost:3000/items/${params.id}`, {
       method: "DELETE",
@@ -42,6 +43,12 @@ export default function UserItemShow(props) {
       .then((res) => res.json())
       // .then((item) => setItem(item))
       .catch((err) => console.log(err))
+  }
+
+  const editItem = () => {
+    navigate({
+      pathname: `/edititem/${params.id}`,
+    })
   }
 
   return (
@@ -72,8 +79,11 @@ export default function UserItemShow(props) {
               <Typography>{item.description}</Typography>
             </Grid>
             <Button onClick={() => deleteItem()}>
-        <Typography>Delete Item</Typography>
-      </Button>
+              <Typography>Delete Item</Typography>
+            </Button>
+            <Button onClick={() => editItem()}>
+              <Typography>Edit Item</Typography>
+            </Button>
           </Grid>
         )}
       </Grid>

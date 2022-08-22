@@ -17,7 +17,6 @@ export default function ItemNew() {
       }),
     })
       .then((res) => res.json())
-      // .then((res) => console.log(res))
       .then((response) => {
         if (response.status === 401) {
           alert("not added")
