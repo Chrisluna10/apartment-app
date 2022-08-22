@@ -31,7 +31,10 @@ end
 def create
     item = current_user.items.create(item_params)
     if item.valid? 
-        render json: item
+        render json: {
+          item: item,
+          status: "created"
+        }
     else
     render json: item.errors, status: 422
 
@@ -41,13 +44,19 @@ end
 def update
     item = Item.find(params[:id])
     item.update(item_params)
-    render json: item
+    render json: {
+      item: item,
+      status: "created"
+    }
 end
 
  def destroy
     item = Item.find(params[:id])
     if current_user.id == item.user_id
       item.destroy
+      render json: {
+        status: "destroyed"
+      }
     else
       head 401
     end

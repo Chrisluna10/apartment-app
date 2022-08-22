@@ -36,7 +36,14 @@ export default function ItemEdit() {
       }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.status === "created") {
+          alert("Item updated")
+          navigate(`/item/${params.id}`)
+        } else {
+          alert("not added")
+        }
+      })
       .catch((err) => console.log(err))
   }
 
@@ -49,7 +56,7 @@ export default function ItemEdit() {
               name: item.name,
               category: item.category,
               price: item.price,
-              description: item.description
+              description: item.description,
             }}
             onSubmit={(values) => editItem(values)}
           >

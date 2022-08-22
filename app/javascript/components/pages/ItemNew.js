@@ -17,12 +17,12 @@ export default function ItemNew() {
       }),
     })
       .then((res) => res.json())
-      .then((response) => {
-        if (response.status === 401) {
-          alert("not added")
-        } else {
+      .then((res) => {
+        if (res.status === "created") {
           alert("added")
-          navigate("/")
+          navigate("/profile")
+        } else {
+          alert("not added")
         }
       })
       .catch((err) => console.log(err))

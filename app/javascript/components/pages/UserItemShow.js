@@ -32,7 +32,6 @@ export default function UserItemShow(props) {
     fetchItem()
   }, [])
 
-
   function deleteItem() {
     fetch(`http://localhost:3000/items/${params.id}`, {
       method: "DELETE",
@@ -41,7 +40,14 @@ export default function UserItemShow(props) {
       },
     })
       .then((res) => res.json())
-      // .then((item) => setItem(item))
+      .then((res) => {
+        if (res.status === "destroyed") {
+          alert("Item Deleted")
+          navigate("/profile")
+        } else {
+          alert("not added")
+        }
+      })
       .catch((err) => console.log(err))
   }
 
