@@ -62,7 +62,7 @@ export default function UserItemShow(props) {
       <Grid container item direction="row" justifyContent="flex-start" xs={18}>
         {item && (
           <Grid>
-            {/* <img src={`${Car}`} height={170} /> */}
+            <img src={item.image} height={170} />
             <Grid>
               <Typography>{item.name}</Typography>
             </Grid>

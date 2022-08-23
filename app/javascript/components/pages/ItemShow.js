@@ -12,7 +12,7 @@ import { useNavigate } from "react-router"
 import { useParams } from "react-router-dom"
 
 export default function Item(props) {
-  const [item, setItem] = useState({})
+  const [item, setItem] = useState([])
   const navigate = useNavigate()
   const params = useParams()
 
@@ -40,12 +40,14 @@ export default function Item(props) {
     fetchItem()
   }, [])
 
+  console.log(item)
+
   return (
     <Grid container direction="row" justifyContent="center">
       <Grid container item direction="row" justifyContent="flex-start" xs={18}>
         {item && (
           <Grid>
-            {/* <img src={`${Car}`} height={170} /> */}
+            <img src={item.image} height={300} width={300} />
             <Grid>
               <Typography>{item.name}</Typography>
             </Grid>

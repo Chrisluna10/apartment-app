@@ -35,15 +35,14 @@ export default function ItemIndex(props) {
       pathname: `/item/${item.id}`,
     })
   }
-
+console.log(items)
   return (
-    <Grid container direction="row" justifyContent="center">
-      <Grid container item direction="row" justifyContent="flex-start" xs={18}>
+      <Grid container item direction="row" justifyContent="center" columns={6} >
         {items.map((item) => {
           return (
-            <Card key={item.id} sx={{ maxWidth: 325, padding: 1.5 }}>
+            <Card key={item.id} xs={1} sx={{ maxWidth: 200, padding: 1 }}>
               <CardActionArea onClick={() => handleClick(item)}>
-                <img src={`${Car}`} height={170} />
+                <img src={item.image.url} height={170} width="auto"/>
                 <CardContent>
                   <Typography>{item.name}</Typography>
                 </CardContent>
@@ -69,6 +68,5 @@ export default function ItemIndex(props) {
           )
         })}
       </Grid>
-    </Grid>
   )
 }
