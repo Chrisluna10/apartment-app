@@ -8,7 +8,6 @@ export default function Footer() {
     container
     item
     position="absolute"
-    border="2px solid red"
     sx={{
       left: 0,
       bottom: 0,

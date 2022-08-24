@@ -8,7 +8,6 @@ import {
 } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
-import Car from "../../Assets/Car.png"
 import { useParams } from "react-router-dom"
 
 export default function Profile() {

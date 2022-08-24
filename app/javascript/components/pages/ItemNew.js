@@ -2,7 +2,6 @@ import { Button, Grid, TextField } from "@mui/material"
 import { Formik } from "formik"
 import { useNavigate } from "react-router-dom"
 import React, { useState } from "react"
-import { description } from "commander"
 
 export default function ItemNew() {
   const navigate = useNavigate()
