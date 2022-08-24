@@ -7,6 +7,7 @@ export default function Footer() {
   <Grid
     container
     item
+    position="absolute"
     border="2px solid red"
     sx={{
       left: 0,

@@ -1,20 +1,30 @@
 import { Button, Grid, TextField } from "@mui/material"
 import { Formik } from "formik"
 import { useNavigate } from "react-router-dom"
-import React from "react"
+import React, { useState } from "react"
+import { description } from "commander"
 
 export default function ItemNew() {
   const navigate = useNavigate()
+  const [image, setImage] = useState(null)
+  const [name, setName] = useState("")
+  const [category, setCategory] = useState("")
+  const [price, setPrice] = useState(0)
+  const [description, setDescription] = useState("")
 
-  const addItem = (values) => {
+  function addItem(e) {
+    e.preventDefault()
+
+    const formData = new FormData()
+    formData.append("[item]name", name)
+    formData.append("[item]category", category)
+    formData.append("[item]price", price)
+    formData.append("[item]description", description)
+    formData.append("[item]image", image)
+
     fetch("http://localhost:3000/items", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        item: values,
-      }),
+      body: formData
     })
       .then((res) => res.json())
       .then((res) => {
@@ -28,68 +38,63 @@ export default function ItemNew() {
       .catch((err) => console.log(err))
   }
 
-  const Form = () => {
-    return (
-      <Grid container item direction="column" alignItems="center" spacing={5}>
-        <Formik
-          initialValues={{
-            name: "",
-            category: "",
-            price: "",
-            description: "",
-          }}
-          onSubmit={(values) => addItem(values)}
-        >
-          {({ handleChange, handleSubmit, values }) => (
-            <>
-              <Grid item>
-                <TextField
-                  id="standard-basic"
-                  label="Name"
-                  variant="standard"
-                  onChange={handleChange("name")}
-                  value={values.name}
-                />
-              </Grid>
-              <Grid item>
-                <TextField
-                  id="standard-basic"
-                  label="Category"
-                  variant="standard"
-                  onChange={handleChange("category")}
-                  value={values.category}
-                />
-              </Grid>
-              <Grid item>
-                <TextField
-                  id="standard-basic"
-                  label="Price"
-                  variant="standard"
-                  onChange={handleChange("price")}
-                  value={values.price}
-                />
-              </Grid>
-              <Grid item>
-                <TextField
-                  id="standard-basic"
-                  label="Description"
-                  variant="standard"
-                  onChange={handleChange("description")}
-                  value={values.description}
-                />
-              </Grid>
-              <Grid item>
-                <Button onClick={() => handleSubmit()}> Submit</Button>
-              </Grid>
-            </>
-          )}
-        </Formik>
-      </Grid>
-    )
-  }
   return (
     <Grid container item border="2px solid red">
-      <Form />
+      <Grid container item direction="column" alignItems="center" spacing={5}>
+        <>
+          <Grid item>
+            <TextField
+              id="standard-basic"
+              label="Name"
+              variant="standard"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              id="standard-basic"
+              label="Category"
+              variant="standard"
+              onChange={(e) => setCategory(e.target.value)}
+              value={category}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              id="standard-basic"
+              label="Price"
+              variant="standard"
+              onChange={(e) => setPrice(e.target.value)}
+              value={price}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              id="standard-basic"
+              label="Description"
+              variant="standard"
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              name="image"
+              type="file"
+              label="image"
+              variant="standard"
+              onChange={(e) => setImage(e.target.files[0])}
+              accept="image/*"
+            />
+            {/* {image && <img src={image.url} height='150px' width='180px'/>} */}
+
+          </Grid>
+          <Grid item>
+            <Button onClick={addItem}> Submit</Button>
+          </Grid>
+        </>
+      </Grid>
     </Grid>
   )
 }
