@@ -8,7 +8,6 @@ import {
   CardContent,
   Grid,
 } from "@mui/material"
-import Car from "../../Assets/Car.png"
 
 export default function ItemIndex(props) {
   const [items, setItems] = useState([])
@@ -37,20 +36,20 @@ export default function ItemIndex(props) {
   }
 console.log(items)
   return (
-      <Grid container item direction="row" justifyContent="center" columns={6} >
+      <Grid container item direction="row" justifyContent="center" columns={6} padding={.5}>
         {items.map((item) => {
           return (
             <Card key={item.id} xs={1} sx={{ maxWidth: 200, padding: 1 }}>
               <CardActionArea onClick={() => handleClick(item)}>
-                <img src={item.image.url} height={170} width="auto"/>
+                <img src={item.image.url} height='150px' width='180px'/>
                 <CardContent>
-                  <Typography>{item.name}</Typography>
+                  <Typography fontWeight="fontWeightBold">{item.name}</Typography>
                 </CardContent>
                 <Grid
                   container
                   item
                   direction="column"
-                  paddingLeft={1.5}
+                  padding={1}
                   alignItems="flex-start"
                 >
                   <Typography>{item.category}</Typography>

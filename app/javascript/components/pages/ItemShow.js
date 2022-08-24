@@ -40,14 +40,14 @@ export default function Item(props) {
     fetchItem()
   }, [])
 
-  console.log(item)
+  console.log(item.image)
 
   return (
     <Grid container direction="row" justifyContent="center">
       <Grid container item direction="row" justifyContent="flex-start" xs={18}>
         {item && (
           <Grid>
-            <img src={item.image} height={300} width={300} />
+            {/* <img src={item.image} height={300} width={300} /> */}
             <Grid>
               <Typography>{item.name}</Typography>
             </Grid>

@@ -46,7 +46,7 @@ export default function Profile() {
           return (
             <Card key={item.id} sx={{ maxWidth: 325, padding: 1.5 }}>
               <CardActionArea onClick={() => handleClick(item)}>
-                <img src={`${Car}`} height={170} />
+              <img src={item.image.url} height='150px' width='180px'/>
                 <CardContent>
                   <Typography>{item.name}</Typography>
                 </CardContent>

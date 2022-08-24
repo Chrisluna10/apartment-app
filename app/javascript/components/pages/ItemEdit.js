@@ -57,6 +57,7 @@ export default function ItemEdit() {
               category: item.category,
               price: item.price,
               description: item.description,
+              image: item.image,
             }}
             onSubmit={(values) => editItem(values)}
           >
@@ -96,6 +97,16 @@ export default function ItemEdit() {
                     variant="standard"
                     onChange={handleChange("description")}
                     value={values.description}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    name="image"
+                    type="file"
+                    label="image"
+                    variant="standard"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    accept="image/*"
                   />
                 </Grid>
                 <Grid item>

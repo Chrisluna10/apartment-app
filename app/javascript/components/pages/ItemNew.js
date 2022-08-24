@@ -6,7 +6,7 @@ import { description } from "commander"
 
 export default function ItemNew() {
   const navigate = useNavigate()
-  const [image, setImage] = useState()
+  const [image, setImage] = useState(null)
   const [name, setName] = useState("")
   const [category, setCategory] = useState("")
   const [price, setPrice] = useState(0)
@@ -27,16 +27,14 @@ export default function ItemNew() {
       body: formData
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
-
-      // .then((res) => {
-      //   if (res.status === "created") {
-      //     alert("added")
-      //     navigate("/profile")
-      //   } else {
-      //     alert("not added")
-      //   }
-      // })
+      .then((res) => {
+        if (res.status === "created") {
+          alert("added")
+          navigate("/profile")
+        } else {
+          alert("not added")
+        }
+      })
       .catch((err) => console.log(err))
   }
 
@@ -89,7 +87,7 @@ export default function ItemNew() {
               onChange={(e) => setImage(e.target.files[0])}
               accept="image/*"
             />
-            {image && <img src={image.url} height={200} width={200}/>}
+            {/* {image && <img src={image.url} height='150px' width='180px'/>} */}
 
           </Grid>
           <Grid item>
