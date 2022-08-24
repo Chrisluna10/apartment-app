@@ -40,7 +40,6 @@ export default function ItemIndex(props) {
         {items.map((item) => {
           return (
             <Grid container item direction="row" justifyContent="center" columns={6} xs padding={.8}>
-
             <Card key={item.id} xs={1} sx={{ maxWidth: 200 }} >
               <CardActionArea onClick={() => handleClick(item)}>
                 <img src={item.image.url} height='150px' width='180px'/>

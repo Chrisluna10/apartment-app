@@ -3,6 +3,7 @@ import * as Yup from "yup"
 import { Formik } from "formik"
 import React, { useState } from "react"
 import { useNavigate } from "react-router"
+import RegistrationModal from "../components/RegistrationModal"
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().label("Email").required("Please enter your email"),
@@ -50,13 +51,9 @@ export default function UserLogin(props) {
       })
   }
 
-  const RegNav = () => {
-    navigate("/registration")
-  }
-
   const form = () => {
     return (
-      <>
+      <Grid container item alignItems="center" justifyContent="center" direction="column">
         <TextField
           name="email"
           placeholder="Email"
@@ -72,17 +69,15 @@ export default function UserLogin(props) {
         <Button onClick={login}>
           <Typography>Log In</Typography>
         </Button>
-        <Button onClick={RegNav}>
-          <Typography>Register</Typography>
-        </Button>
-      </>
+        <RegistrationModal />
+      </Grid>
     )
   }
 
   return (
-    <Grid container item justifyContent="center">
+    <Grid container item justifyContent="center" alignItems="center">
       <Grid container item justifyContent="center">
-        <Typography fontSize={40}>Marketplace</Typography>
+        <Typography fontSize={40}>Sign Up/Log In</Typography>
       </Grid>
       <Grid container item justifyContent="center" marginTop={15}>
         <Grid
@@ -91,6 +86,7 @@ export default function UserLogin(props) {
           border="solid 2px black"
           xs={4}
           height={360}
+          width={250}
           direction="column"
           alignItems="center"
         >

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Button, Grid, Typography, Box } from "@mui/material"
+import NavMenu from "./NavMenu"
+import LoginModal from "./LoginModal"
 
 export default function Header(props) {
   const [userInfo, setUserInfo] = useState({})
@@ -24,25 +26,7 @@ export default function Header(props) {
     userFetch()
   }, [])
 
-  function signOut(e) {
-    e.preventDefault()
-
-    fetch("http://localhost:3000/users/sign_out", {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.status === "signed_out") {
-          navigate("login")
-        } else {
-          alert("user not signed out")
-        }
-      })
-  }
+  
 
   const {
     logged_in,
@@ -69,14 +53,11 @@ export default function Header(props) {
         </Grid>
 
         <Grid container item direction="row" justifyContent="flex-end" xs={4}>
-          <Grid item >
-            {logged_in && <Link to="profile">Profile</Link>}
+          <Grid item padding={.5}>
+            {!logged_in && <LoginModal />}
           </Grid>
           <Grid item padding={.5}>
-            {!logged_in && <Link to="login">Login</Link>}
-          </Grid>
-          <Grid item padding={.5}>
-            {logged_in && <Button onClick={signOut}>Logout</Button>}
+            {logged_in && <NavMenu />}
           </Grid>
           <Grid item padding={.5}>
             {logged_in && <Typography>Welcome {userInfo.email}!</Typography>}

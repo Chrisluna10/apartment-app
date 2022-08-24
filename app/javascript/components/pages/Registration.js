@@ -29,6 +29,7 @@ export default function Registration(props) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [password_confirmation, setPasswordConfirmation] = useState("")
+  
 
   // const hasPasswordError = (password, passwordConfirmation) => {
   //   if (password !== passwordConfirmation) {
@@ -77,6 +78,9 @@ export default function Registration(props) {
   }
 
   function form() {
+    const handleClose = () => {
+      setOpen(false);
+    };
     return (
       <>
         <TextField
