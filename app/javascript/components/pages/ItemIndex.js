@@ -34,7 +34,7 @@ export default function ItemIndex(props) {
       pathname: `/item/${item.id}`,
     })
   }
-console.log(items)
+  
   return (
       <Grid container item  >
         {items.map((item) => {

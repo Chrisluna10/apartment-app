@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { Button, Grid, Typography } from "@mui/material"
+import { Button, Grid, Typography, Box } from "@mui/material"
 
 export default function Header(props) {
   const [userInfo, setUserInfo] = useState({})
@@ -52,35 +52,38 @@ export default function Header(props) {
     sign_out_route,
   } = props
   return (
-    <Grid container item >
-      <nav>
-        <Grid container item direction="row">
-          <Grid item padding={3}>
+    <nav>
+      <Grid container borderBottom="1px solid #9b9ba4">
+      <Grid container item direction="row" columns={12}>
+        <Grid container item direction="row" xs={4} justifyContent="flex-start">
+          <Grid item padding={.5}>
             <Link to="/">Home</Link>
           </Grid>
-          <Grid item padding={3}>
-            <Link to="/itemindex">Items</Link>
-          </Grid>
-          <Grid item padding={3}>
-            {logged_in && <Link to="profile">Profile</Link>}
-          </Grid>
-          <Grid item padding={3}>
+          <Grid item padding={.5}>
             {logged_in && <Link to="ItemNew">Create Item</Link>}
           </Grid>
-          <Grid item padding={3}>
+        </Grid>
+
+        <Grid container item direction="row" justifyContent="center" xs={4}>
+          <Typography> Marketplace App</Typography>
+        </Grid>
+
+        <Grid container item direction="row" justifyContent="flex-end" xs={4}>
+          <Grid item >
+            {logged_in && <Link to="profile">Profile</Link>}
+          </Grid>
+          <Grid item padding={.5}>
             {!logged_in && <Link to="login">Login</Link>}
           </Grid>
-          {/* <Grid item padding={3}>
-      <Link to="registration">Registration</Link>
-      </Grid> */}
-          <Grid item padding={3}>
+          <Grid item padding={.5}>
             {logged_in && <Button onClick={signOut}>Logout</Button>}
           </Grid>
-          <Grid item padding={3}>
+          <Grid item padding={.5}>
             {logged_in && <Typography>Welcome {userInfo.email}!</Typography>}
           </Grid>
         </Grid>
-      </nav>
-    </Grid>
+      </Grid>
+      </Grid>
+    </nav>
   )
 }

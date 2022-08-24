@@ -19,7 +19,6 @@ export default function Home(props) {
     return (
   
        <Grid container item >
-        <Typography>Marketplace App</Typography>
        <ItemIndex />
      </Grid>
     )

@@ -50,6 +50,10 @@ export default function UserLogin(props) {
       })
   }
 
+  const RegNav = () => {
+    navigate("/registration")
+  }
+
   const form = () => {
     return (
       <>
@@ -67,6 +71,9 @@ export default function UserLogin(props) {
         />
         <Button onClick={login}>
           <Typography>Log In</Typography>
+        </Button>
+        <Button onClick={RegNav}>
+          <Typography>Register</Typography>
         </Button>
       </>
     )

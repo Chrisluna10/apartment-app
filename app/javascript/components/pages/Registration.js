@@ -1,7 +1,7 @@
 import { Button, Grid, TextField, Typography } from "@mui/material"
 import * as Yup from "yup"
 import { Formik } from "formik"
-import { useState } from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router"
 
 const validationSchema = Yup.object().shape({
@@ -23,92 +23,84 @@ const showError = (e) => {
 }
 
 export default function Registration(props) {
-  const [errorMessage, setErrorMessage] = useState<string>("")
-  const [hasError, setError] = useState<boolean>(false)
+  // const [errorMessage, setErrorMessage] = useState("")
+  // const [hasError, setError] = useState(false)
   const navigate = useNavigate()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [password_confirmation, setPasswordConfirmation] = useState("")
 
-  const hasPasswordError = (password, passwordConfirmation) => {
-    if (password !== passwordConfirmation) {
-      setErrorMessage("Passwords don't match")
-      return true
-    } else if (password.length < 6) {
-      setErrorMessage("Password needs to be at least 6 characters")
-      return true
-    }
-    return false
-  }
+  // const hasPasswordError = (password, passwordConfirmation) => {
+  //   if (password !== passwordConfirmation) {
+  //     setErrorMessage("Passwords don't match")
+  //     return true
+  //   } else if (password.length < 6) {
+  //     setErrorMessage("Password needs to be at least 6 characters")
+  //     return true
+  //   }
+  //   return false
+  // }
 
-  const hasUsernameError = (email) => {
-    if (!(email.includes("@") && email.includes("."))) {
-      setErrorMessage("Invalid email")
-      return true
-    }
-    return false
-  }
+  // const hasUsernameError = (email) => {
+  //   if (!(email.includes("@") && email.includes("."))) {
+  //     setErrorMessage("Invalid email")
+  //     return true
+  //   }
+  //   return false
+  // }
 
- function register() {
-    
-    if (
-      hasPasswordError(
-        credentials.password,
-        credentials.password_confirmation
-      ) ||
-      hasUsernameError(credentials.email)
-    ) {
-      setError(true)
-    } else {
-      fetch("http://localhost:3000/users/sign_up", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+  function register(e) {
+    e.preventDefault()
+
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: {
+          email: email,
+          password: password,
+          password_confirmation: password_confirmation,
         },
-        body: JSON.stringify({
-          user: formData,
-        }),
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === "created") {
+          alert("Account added. Please log in.")
+          navigate("/login")
+        } else {
+          alert("registration unsucessful")
+        }
       })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.status === "created") {
-            props.handleLogin(res.user)
-            navigate("/home")
-          }
-        })
-    }
   }
 
   function form() {
     return (
-      <Formik
-        initialValues={initialValues}
-        onSubmit={(values) => register(values)}
-        validationSchema={validationSchema}
-      >
-        {({ handleChange, handleSubmit, values }) => (
-          <>
-            <TextField
-              name="email"
-              placeholder="Email"
-              onChange={handleChange("email")}
-              value={values.email}
-            />
-            <TextField
-              name="password"
-              placeholder="Password"
-              onChange={handleChange("password")}
-              value={values.password}
-            />
-            <TextField
-              name="password_confirmation"
-              placeholder="Verify Password"
-              onChange={handleChange("password_confirmation")}
-              value={values.password_confirmation}
-            />
-            <Button onClick={() => handleSubmit()}>
-              <Typography>Register</Typography>
-            </Button>
-          </>
-        )}
-      </Formik>
+      <>
+        <TextField
+          name="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
+        <TextField
+          name="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
+        <TextField
+          name="password_confirmation"
+          placeholder="Verify Password"
+          onChange={(e) => setPasswordConfirmation(e.target.value)}
+          value={password_confirmation}
+        />
+        <Button onClick={register}>
+          <Typography>Register</Typography>
+        </Button>
+      </>
     )
   }
 
@@ -127,7 +119,7 @@ export default function Registration(props) {
           direction="column"
           alignItems="center"
         >
-          {hasError && showError(errorMessage)}
+          {/* {hasError && showError(errorMessage)} */}
           {form()}
         </Grid>
       </Grid>
