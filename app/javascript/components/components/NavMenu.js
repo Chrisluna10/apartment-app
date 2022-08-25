@@ -19,6 +19,13 @@ export default function BasicMenu() {
     navigate('/profile')
 }
 
+const buttonStyle = {
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+    color: "black",
+  }
+
 function signOut() {
 
     fetch("http://localhost:3000/users/sign_out", {
@@ -47,6 +54,7 @@ function signOut() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        sx={{ ...buttonStyle }}
       >
         Account
       </Button>

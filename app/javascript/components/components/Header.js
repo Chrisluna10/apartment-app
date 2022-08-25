@@ -5,7 +5,7 @@ import NavMenu from "./NavMenu"
 import LoginModal from "./LoginModal"
 
 export default function Header(props) {
-  const [userInfo, setUserInfo] = useState({})
+  const [userInfo, setUserInfo] = useState([])
   const navigate = useNavigate()
 
   function userFetch() {
@@ -51,15 +51,15 @@ export default function Header(props) {
           <Typography fontSize="20px"> Marketplace App</Typography>
         </Grid>
 
-        <Grid container item direction="row" justifyContent="flex-end" xs={4}>
+        <Grid container item direction="row" alignItems="center" justifyContent="flex-end" xs={4}>
           <Grid item padding={.5}>
             {!logged_in && <LoginModal />}
           </Grid>
           <Grid item padding={.5}>
-            {logged_in && <NavMenu />}
+            {logged_in && <Typography>Welcome {userInfo.email}!</Typography>}
           </Grid>
           <Grid item padding={.5}>
-            {logged_in && <Typography>Welcome {userInfo.email}!</Typography>}
+            {logged_in && <NavMenu />}
           </Grid>
         </Grid>
       </Grid>

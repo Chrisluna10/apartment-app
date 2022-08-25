@@ -95,7 +95,7 @@ export default function RegistrationModal(props) {
       .then((res) => {
         if (res.status === "created") {
           alert("Account added. Please log in.")
-          navigate("/login")
+          setOpen(false)
         } else {
           alert("registration unsucessful")
         }
