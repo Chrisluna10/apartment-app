@@ -1,10 +1,8 @@
-import Registration from "../pages/Registration"
 import * as Yup from "yup"
-import { Button, Grid, TextField, Typography, Modal, Box} from "@mui/material"
+import { Button, Grid, TextField, Typography, Modal, Box } from "@mui/material"
 import { Formik } from "formik"
 import React, { useState } from "react"
 import { useNavigate } from "react-router"
-
 
 const style = {
   position: "absolute",
@@ -18,6 +16,13 @@ const style = {
   pt: 2,
   px: 4,
   pb: 3,
+}
+
+const buttonStyle = {
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
+  color: "black",
 }
 
 export default function RegistrationModal(props) {
@@ -72,63 +77,77 @@ export default function RegistrationModal(props) {
   //   }
   //   return false
   // }
-function register() {
-  fetch("http://localhost:3000/users", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user: {
-        email: email,
-        password: password,
-        password_confirmation: password_confirmation,
+  function register() {
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    }),
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      if (res.status === "created") {
-        alert("Account added. Please log in.")
-        navigate("/login")
-      } else {
-        alert("registration unsucessful")
-      }
+      body: JSON.stringify({
+        user: {
+          email: email,
+          password: password,
+          password_confirmation: password_confirmation,
+        },
+      }),
     })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === "created") {
+          alert("Account added. Please log in.")
+          navigate("/login")
+        } else {
+          alert("registration unsucessful")
+        }
+      })
   }
 
   function form() {
     return (
-      <>
-        <TextField
-          name="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <TextField
-          name="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <TextField
-          name="password_confirmation"
-          placeholder="Verify Password"
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          value={password_confirmation}
-        />
-        <Button onClick={register}>
-          <Typography>Register</Typography>
+      <Grid
+        container
+        item
+        alignItems="center"
+        justifyContent="center"
+        direction="column"
+        height={400}
+        width={250}
+      >
+        <Grid container item justifyContent="center" paddingBottom={1}>
+          <TextField
+            name="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+        </Grid>
+        <Grid container item justifyContent="center" paddingBottom={1}>
+          <TextField
+            name="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+        </Grid>
+        <Grid container item justifyContent="center" paddingBottom={1}>
+          <TextField
+            name="password_confirmation"
+            placeholder="Verify Password"
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            value={password_confirmation}
+          />
+        </Grid>
+        <Button onClick={register} sx={{ ...buttonStyle }}>
+          Register
         </Button>
-        <Button onClick={handleClose}>Go Back</Button>
-      </>
+        <Button onClick={handleClose} sx={{ ...buttonStyle }}>Go Back</Button>
+      </Grid>
     )
   }
 
   return (
-    <React.Fragment>
-      <Button onClick={handleOpen}>Register</Button>
+    <>
+      <Button onClick={handleOpen} sx={{ ...buttonStyle }}>Register</Button>
       <Modal
         hideBackdrop
         open={open}
@@ -136,20 +155,18 @@ function register() {
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style, width: 400 }}>
+        <Box sx={{ ...style }}>
           <Grid container item justifyContent="center">
             <Grid container item justifyContent="center">
-              <Typography fontSize={40}>Marketplace</Typography>
+              <Typography fontSize={40}>Log in/Sign Up</Typography>
             </Grid>
-            <Grid container item justifyContent="center" marginTop={15}>
+            <Grid container item justifyContent="center">
               <Grid
                 container
                 item
-                border="solid 2px black"
-                xs={4}
-                height={360}
-                direction="column"
-                alignItems="center"
+                justifyContent="center"
+                height={400}
+                width={280}
               >
                 {/* {hasError && showError(errorMessage)} */}
                 {form()}
@@ -158,6 +175,6 @@ function register() {
           </Grid>
         </Box>
       </Modal>
-    </React.Fragment>
+    </>
   )
 }

@@ -19,6 +19,12 @@ const loginError = () => {
     </Grid>
   )
 }
+const buttonStyle = {
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
+  color: "black",
+}
 
 export default function UserLogin(props) {
   const [loginFailed, setLoginFailed] = useState(false)
@@ -53,20 +59,32 @@ export default function UserLogin(props) {
 
   const form = () => {
     return (
-      <Grid container item alignItems="center" justifyContent="center" direction="column">
-        <TextField
-          name="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <TextField
-          name="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <Button onClick={login}>
+      <Grid
+        container
+        item
+        alignItems="center"
+        justifyContent="center"
+        direction="column"
+        height={400}
+        width={250}
+      >
+        <Grid container item justifyContent="center" paddingBottom={1}>
+          <TextField
+            name="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+        </Grid>
+        <Grid container item justifyContent="center" paddingBottom={1}>
+          <TextField
+            name="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+        </Grid>
+        <Button onClick={login} sx={{ ...buttonStyle }}>
           <Typography>Log In</Typography>
         </Button>
         <RegistrationModal />
@@ -77,21 +95,10 @@ export default function UserLogin(props) {
   return (
     <Grid container item justifyContent="center" alignItems="center">
       <Grid container item justifyContent="center">
-        <Typography fontSize={40}>Sign Up/Log In</Typography>
+        <Typography fontSize={40}>Log In/Sign Up</Typography>
       </Grid>
-      <Grid container item justifyContent="center" marginTop={15}>
-        <Grid
-          container
-          item
-          border="solid 2px black"
-          xs={4}
-          height={360}
-          width={250}
-          direction="column"
-          alignItems="center"
-        >
-          {form()}
-        </Grid>
+      <Grid container item justifyContent="center" height={400} width={280}>
+        {form()}
       </Grid>
     </Grid>
   )

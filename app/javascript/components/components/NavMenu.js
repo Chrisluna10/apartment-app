@@ -32,7 +32,7 @@ function signOut() {
       .then((res) => {
         if (res.status === "signed_out") {
             alert("Signed Out")
-          navigate("/login")
+          navigate("/")
         } else {
           alert("user not signed out")
         }
