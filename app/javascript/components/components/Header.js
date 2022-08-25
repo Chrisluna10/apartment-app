@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-import { Button, Grid, Typography } from "@mui/material"
+import { Link, useNavigate } from "react-router-dom"
+import { Button, Grid, Typography, Box } from "@mui/material"
+import NavMenu from "./NavMenu"
+import LoginModal from "./LoginModal"
 
 export default function Header(props) {
-  const [userInfo, setUserInfo] = useState({})
+  const [userInfo, setUserInfo] = useState([])
+  const navigate = useNavigate()
 
   function userFetch() {
     fetch("http://localhost:3000/current_user", {
@@ -23,6 +26,8 @@ export default function Header(props) {
     userFetch()
   }, [])
 
+  
+
   const {
     logged_in,
     current_user,
@@ -31,35 +36,33 @@ export default function Header(props) {
     sign_out_route,
   } = props
   return (
-    <Grid container item border="2px solid red">
-      <nav>
-        <Grid container item direction="row">
-          <Grid item padding={3}>
+    <nav>
+      <Grid container item direction="row" columns={12} borderBottom="1px solid #9b9ba4" height="60px" justifyContent="center" alignItems="center">
+        <Grid container item direction="row" xs={4} justifyContent="flex-start">
+          <Grid item padding={.5}>
             <Link to="/">Home</Link>
           </Grid>
-          <Grid item padding={3}>
-            <Link to="/itemindex">Items</Link>
-          </Grid>
-          <Grid item padding={3}>
-            {logged_in && <Link to="profile">Profile</Link>}
-          </Grid>
-          <Grid item padding={3}>
+          <Grid item padding={.5}>
             {logged_in && <Link to="ItemNew">Create Item</Link>}
           </Grid>
-          <Grid item padding={3}>
-            {!logged_in && <Link to={sign_in_route}>Login</Link>}
+        </Grid>
+
+        <Grid container item direction="row" justifyContent="center" xs={4}>
+          <Typography fontSize="20px"> Marketplace App</Typography>
+        </Grid>
+
+        <Grid container item direction="row" alignItems="center" justifyContent="flex-end" xs={4}>
+          <Grid item padding={.5}>
+            {!logged_in && <LoginModal />}
           </Grid>
-          {/* <Grid item padding={3}>
-      <Link to="registration">Registration</Link>
-      </Grid> */}
-          <Grid item padding={3}>
-            {logged_in && <Link to={sign_out_route}>Logout</Link>}
-          </Grid>
-          <Grid item padding={3}>
+          <Grid item padding={.5}>
             {logged_in && <Typography>Welcome {userInfo.email}!</Typography>}
           </Grid>
+          <Grid item padding={.5}>
+            {logged_in && <NavMenu />}
+          </Grid>
         </Grid>
-      </nav>
-    </Grid>
+      </Grid>
+    </nav>
   )
 }

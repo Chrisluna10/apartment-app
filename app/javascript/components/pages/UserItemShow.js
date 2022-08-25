@@ -7,12 +7,11 @@ import {
   Grid,
   Button,
 } from "@mui/material"
-// import Car from "../../Assets/Car.png"
 import { useNavigate } from "react-router"
 import { useParams } from "react-router-dom"
 
 export default function UserItemShow(props) {
-  const [item, setItem] = useState({})
+  const [item, setItem] = useState([])
   const navigate = useNavigate()
   const params = useParams()
 
@@ -62,7 +61,7 @@ export default function UserItemShow(props) {
       <Grid container item direction="row" justifyContent="flex-start" xs={18}>
         {item && (
           <Grid>
-            {/* <img src={item.image.url} height={170} /> */}
+            <img src={item.image.url} height={170} />
             <Grid>
               <Typography>{item.name}</Typography>
             </Grid>

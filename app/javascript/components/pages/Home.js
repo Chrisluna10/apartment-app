@@ -1,5 +1,5 @@
 import { Typography, Grid } from '@mui/material'
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import ItemIndex from "./ItemIndex"
 
@@ -13,11 +13,13 @@ export default function Home(props) {
       sign_out_route,
     } = props
 
+    useEffect(() => {
+    }, [])
+
     return (
   
-       <Grid container item border="2px solid red">
-        <Typography>Marketplace App</Typography>
-       {/* <ItemIndex /> */}
+       <Grid container item >
+       <ItemIndex />
      </Grid>
     )
   }

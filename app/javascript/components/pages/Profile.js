@@ -8,7 +8,6 @@ import {
 } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
-import Car from "../../Assets/Car.png"
 import { useParams } from "react-router-dom"
 
 export default function Profile() {
@@ -40,38 +39,39 @@ export default function Profile() {
   }
 
   return (
-    <Grid container direction="row" justifyContent="center">
-      <Grid container item direction="row" justifyContent="flex-start" xs={18}>
-        {items.map((item) => {
-          return (
-            <Card key={item.id} sx={{ maxWidth: 325, padding: 1.5 }}>
-              <CardActionArea onClick={() => handleClick(item)}>
-              <img src={item.image.url} height='150px' width='180px'/>
-                <CardContent>
-                  <Typography>{item.name}</Typography>
-                </CardContent>
-                <Grid
-                  container
-                  item
-                  direction="column"
-                  paddingLeft={1.5}
-                  alignItems="flex-start"
-                >
-                  <Typography>{item.category}</Typography>
-                  <Grid
-                    container
-                    item
-                    direction="row"
-                    justifyContent="space-between"
-                  >
-                    <Typography>${item.price}</Typography>
-                  </Grid>
-                </Grid>
-              </CardActionArea>
-            </Card>
-          )
-        })}
-      </Grid>
-    </Grid>
+    <Grid container item  >
+    {items.map((item) => {
+      return (
+        <Grid container item direction="row" justifyContent="center" columns={6} xs padding={.8}>
+
+        <Card key={item.id} xs={1} sx={{ maxWidth: 200 }} >
+          <CardActionArea onClick={() => handleClick(item)}>
+            <img src={item.image.url} height='150px' width='180px'/>
+            <CardContent>
+              <Typography fontWeight="fontWeightBold">{item.name}</Typography>
+            </CardContent>
+            <Grid
+              container
+              item
+              direction="column"
+              padding={1}
+              alignItems="flex-start"
+            >
+              <Typography>{item.category}</Typography>
+              <Grid
+                container
+                item
+                direction="row"
+                justifyContent="space-between"
+              >
+                <Typography>${item.price}</Typography>
+              </Grid>
+            </Grid>
+          </CardActionArea>
+        </Card>
+        </Grid>
+      )
+    })}
+  </Grid>
   )
 }
