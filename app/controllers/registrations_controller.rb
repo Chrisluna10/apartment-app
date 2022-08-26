@@ -6,10 +6,13 @@ class RegistrationsController < Devise::RegistrationsController
         render json: {
           user: @user,
           status: "created"
+        } elsif User.exists?(username: @user.username)
+        render json:{
+          status: "username_exists"
         }
-      else
+      elsif
         warden.custom_failure!
-        render json: { error: 'signup error' }, status: :unprocessable_entity
+        render json: { error: 'signup error' , status: @user.errors }
       end
     end
   
@@ -36,6 +39,6 @@ class RegistrationsController < Devise::RegistrationsController
     private
   
     def user_params
-       params.require(:user).permit(:email, :password, :password_confirmation)
+       params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
   end

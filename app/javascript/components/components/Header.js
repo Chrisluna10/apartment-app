@@ -56,7 +56,7 @@ export default function Header(props) {
             {!logged_in && <LoginModal />}
           </Grid>
           <Grid item padding={.5}>
-            {logged_in && <Typography>Welcome {userInfo.email}!</Typography>}
+            {logged_in && <Typography>Welcome {userInfo.username}!</Typography>}
           </Grid>
           <Grid item padding={.5}>
             {logged_in && <NavMenu />}
