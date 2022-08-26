@@ -20,13 +20,10 @@ export default function Header(props) {
       .then((res) => res.json())
       .then((res) => setUserInfo(res.user))
   }
-  // console.log("info", userInfo)
 
   useEffect(() => {
     userFetch()
   }, [])
-
-  
 
   const {
     logged_in,
@@ -37,12 +34,21 @@ export default function Header(props) {
   } = props
   return (
     <nav>
-      <Grid container item direction="row" columns={12} borderBottom="1px solid #9b9ba4" height="60px" justifyContent="center" alignItems="center">
+      <Grid
+        container
+        item
+        direction="row"
+        columns={12}
+        borderBottom="1px solid #9b9ba4"
+        height="60px"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Grid container item direction="row" xs={4} justifyContent="flex-start">
-          <Grid item padding={.5}>
+          <Grid item padding={0.5}>
             <Link to="/">Home</Link>
           </Grid>
-          <Grid item padding={.5}>
+          <Grid item padding={0.5}>
             {logged_in && <Link to="ItemNew">Create Item</Link>}
           </Grid>
         </Grid>
@@ -51,14 +57,21 @@ export default function Header(props) {
           <Typography fontSize="20px"> Marketplace App</Typography>
         </Grid>
 
-        <Grid container item direction="row" alignItems="center" justifyContent="flex-end" xs={4}>
-          <Grid item padding={.5}>
+        <Grid
+          container
+          item
+          direction="row"
+          alignItems="center"
+          justifyContent="flex-end"
+          xs={4}
+        >
+          <Grid item padding={0.5}>
             {!logged_in && <LoginModal />}
           </Grid>
-          <Grid item padding={.5}>
+          <Grid item padding={0.5}>
             {logged_in && <Typography>Welcome {userInfo.username}!</Typography>}
           </Grid>
-          <Grid item padding={.5}>
+          <Grid item padding={0.5}>
             {logged_in && <NavMenu />}
           </Grid>
         </Grid>

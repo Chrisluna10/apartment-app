@@ -97,12 +97,12 @@ export default function RegistrationModal(props) {
       }),
     })
       .then((res) => res.json())
+      // .then((res) => console.log(res.status))
       .then((res) => {
         if (res.status === "created") {
-          alert("Account added. Please log in.")
-          setOpen(false)
-        }
-        if (res.status === "username_exists") {
+          alert("Account added.")
+          window.location.reload(false)
+        } else if (res.status === "username_exists") {
           alert("username taken")
         } else {
           alert("registration unsucessful")

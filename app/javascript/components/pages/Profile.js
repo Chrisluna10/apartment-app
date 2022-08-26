@@ -37,6 +37,9 @@ export default function Profile() {
       pathname: `item/${item.id}`,
     })
   }
+  function refreshPage() {
+    window.location.reload(false)
+  }
 
   return (
     <Grid container item  >
@@ -69,6 +72,7 @@ export default function Profile() {
             </Grid>
           </CardActionArea>
         </Card>
+        <Button onClick={refreshPage}> refresh page </Button>
         </Grid>
       )
     })}

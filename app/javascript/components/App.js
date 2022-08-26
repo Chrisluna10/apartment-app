@@ -12,25 +12,15 @@ import UserItemShow from "./pages/UserItemShow"
 import ItemEdit from "./pages/ItemEdit"
 
 export default function App(props) {
-  const [items, setItems] = useState([])
-  // const {
-  //   logged_in,
-  //   current_user,
-  //   new_user_route,
-  //   sign_in_route,
-  //   sign_out_route,
-  // } = props
-
- 
 
   return (
     <Router>
-      <Header {...props} />
+      <Header {...props}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/itemindex"
-          element={<ItemIndex {...props} items={items} />}
+          element={<ItemIndex {...props} />}
         />
         <Route path="item/:id" element={<Item />} />
         <Route path="/itemnew" element={<ItemNew {...props} />} />
