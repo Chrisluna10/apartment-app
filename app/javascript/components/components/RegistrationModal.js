@@ -35,9 +35,11 @@ export default function RegistrationModal(props) {
   }
 
   const validationSchema = Yup.object().shape({
-    usernam: Yup.string()
+    username: Yup.string()
       .label("Username")
-      .required("Please enter your username"),
+      .required("Please enter your username")
+      .min(6, "Must be at least 6 characters")
+      .max(12, "Must be less than 12 characters"),
     email: Yup.string().label("Email").required("Please enter your email"),
     password: Yup.string()
       .label("Password")

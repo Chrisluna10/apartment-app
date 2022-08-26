@@ -34,17 +34,27 @@ export default function ItemIndex(props) {
       pathname: `/item/${item.id}`,
     })
   }
-  
+
   return (
-      <Grid container item  >
-        {items.map((item) => {
-          return (
-            <Grid container item direction="row" justifyContent="center" columns={6} xs padding={.8}>
-            <Card key={item.id} xs={1} sx={{ maxWidth: 200 }} >
+    <Grid container item>
+      {items.map((item) => {
+        return (
+          <Grid
+            container
+            item
+            direction="row"
+            justifyContent="center"
+            columns={6}
+            xs
+            padding={0.8}
+          >
+            <Card key={item.id} xs={1} sx={{ maxWidth: 200 }}>
               <CardActionArea onClick={() => handleClick(item)}>
-                <img src={item.image.url} height='150px' width='180px'/>
+                <img src={item.image.url} height="150px" width="180px" />
                 <CardContent>
-                  <Typography fontWeight="fontWeightBold">{item.name}</Typography>
+                  <Typography fontWeight="fontWeightBold">
+                    {item.name}
+                  </Typography>
                 </CardContent>
                 <Grid
                   container
@@ -65,9 +75,9 @@ export default function ItemIndex(props) {
                 </Grid>
               </CardActionArea>
             </Card>
-            </Grid>
-          )
-        })}
-      </Grid>
+          </Grid>
+        )
+      })}
+    </Grid>
   )
 }

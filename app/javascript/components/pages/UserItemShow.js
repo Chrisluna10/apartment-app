@@ -23,7 +23,15 @@ export default function UserItemShow(props) {
       },
     })
       .then((res) => res.json())
-      .then((item) => setItem(item))
+      .then((res) =>
+        setItem({
+          name: res.name,
+          category: res.category,
+          price: res.price,
+          description: res.description,
+          image: res.image.url,
+        })
+      )
       .catch((err) => console.log(err))
   }
 
@@ -61,7 +69,7 @@ export default function UserItemShow(props) {
       <Grid container item direction="row" justifyContent="flex-start" xs={18}>
         {item && (
           <Grid>
-            <img src={item.image.url} height={170} />
+            <img src={item.image} height={170} />
             <Grid>
               <Typography>{item.name}</Typography>
             </Grid>

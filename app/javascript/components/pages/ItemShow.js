@@ -12,11 +12,11 @@ import { useNavigate } from "react-router"
 import { useParams } from "react-router-dom"
 
 export default function Item(props) {
-  const [item, setItem] = useState([])
+  const [item, setItem] = useState({})
   const navigate = useNavigate()
   const params = useParams()
 
-   const {
+  const {
     logged_in,
     current_user,
     new_user_route,
@@ -32,7 +32,15 @@ export default function Item(props) {
       },
     })
       .then((res) => res.json())
-      .then((item) => setItem(item))
+      .then((res) =>
+        setItem({
+          name: res.name,
+          category: res.category,
+          price: res.price,
+          description: res.description,
+          image: res.image.url,
+        })
+      )
       .catch((err) => console.log(err))
   }
 
@@ -40,14 +48,12 @@ export default function Item(props) {
     fetchItem()
   }, [])
 
-  console.log(item.image)
-
   return (
     <Grid container direction="row" justifyContent="center">
       <Grid container item direction="row" justifyContent="flex-start" xs={18}>
         {item && (
           <Grid>
-            {/* <img src={item.image} height={300} width={300} /> */}
+            <img src={item.image} height={300} width={300} />
             <Grid>
               <Typography>{item.name}</Typography>
             </Grid>
