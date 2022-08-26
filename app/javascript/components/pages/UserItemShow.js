@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react"
-import {
-  Typography,
-  Card,
-  CardActionArea,
-  CardContent,
-  Grid,
-  Button,
-} from "@mui/material"
+import { Typography, Grid, Button, Box } from "@mui/material"
 import { useNavigate } from "react-router"
 import { useParams } from "react-router-dom"
 
@@ -29,7 +22,7 @@ export default function UserItemShow(props) {
           category: res.category,
           price: res.price,
           description: res.description,
-          image: res.image.url,
+          image: res.image_url,
         })
       )
       .catch((err) => console.log(err))
@@ -65,13 +58,37 @@ export default function UserItemShow(props) {
   }
 
   return (
-    <Grid container direction="row" justifyContent="center">
-      <Grid container item direction="row" justifyContent="flex-start" xs={18}>
-        {item && (
-          <Grid>
-            <img src={item.image} height={170} />
-            <Grid>
-              <Typography>{item.name}</Typography>
+    <>
+      {item && (
+        <Grid
+          container
+          item
+          direction="row"
+          justifyContent="flex-start"
+          columns={12}
+        >
+          <Box
+            border="solid green 2px"
+            component="img"
+            xs={8}
+            sx={{
+              height: 500,
+              width: 600,
+            }}
+            src={item.image}
+          />
+
+          <Grid container item border="solid red 2px" xs={4}>
+            <Grid
+              container
+              item
+              direction="column"
+              paddingLeft={1.5}
+              alignItems="flex-start"
+            >
+              <Typography fontWeight="bold" fontSize={40}>
+                {item.name}
+              </Typography>
             </Grid>
             <Grid
               container
@@ -98,8 +115,8 @@ export default function UserItemShow(props) {
               <Typography>Edit Item</Typography>
             </Button>
           </Grid>
-        )}
-      </Grid>
-    </Grid>
+        </Grid>
+      )}
+    </>
   )
 }

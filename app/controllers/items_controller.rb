@@ -10,10 +10,10 @@ class ItemsController < ApplicationController
     render json: items
 end
 
-def show
-  item = Item.find(params[:id])
-  render json: item
-end
+  def show
+    item = Item.find(params[:id])
+     render json: item
+  end
 
 def logged_in
   if current_user

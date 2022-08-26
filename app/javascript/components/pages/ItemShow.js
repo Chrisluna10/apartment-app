@@ -38,12 +38,12 @@ export default function Item(props) {
           category: res.category,
           price: res.price,
           description: res.description,
-          image: res.image.url,
+          image: res.image_url,
+          username: res.username
         })
       )
       .catch((err) => console.log(err))
   }
-
   useEffect(() => {
     fetchItem()
   }, [])
@@ -56,6 +56,7 @@ export default function Item(props) {
             <img src={item.image} height={300} width={300} />
             <Grid>
               <Typography>{item.name}</Typography>
+              <Typography>posted by: {item.username}</Typography>
             </Grid>
             <Grid
               container

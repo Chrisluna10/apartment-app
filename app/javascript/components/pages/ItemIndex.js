@@ -50,7 +50,7 @@ export default function ItemIndex(props) {
           >
             <Card key={item.id} xs={1} sx={{ maxWidth: 200 }}>
               <CardActionArea onClick={() => handleClick(item)}>
-                <img src={item.image.url} height="150px" width="180px" />
+                <img src={item.image_url} height="150px" width="180px" />
                 <CardContent>
                   <Typography fontWeight="fontWeightBold">
                     {item.name}
