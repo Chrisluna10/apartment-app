@@ -9,11 +9,11 @@ import {
   Grid,
 } from "@mui/material"
 
-export default function ItemIndex(props) {
+export default function Vehicles(props) {
   const [items, setItems] = useState([])
   const navigate = useNavigate()
 
-  function itemsInfo() {
+  function vehicleIndex() {
     fetch("http://localhost:3000/items", {
       method: "GET",
       headers: {
@@ -26,7 +26,7 @@ export default function ItemIndex(props) {
   }
 
   useEffect(() => {
-    itemsInfo()
+    vehicleIndex()
   }, [])
 
   const handleClick = (item) => {
@@ -35,9 +35,15 @@ export default function ItemIndex(props) {
     })
   }
 
+  const vehicles = items.filter(item => {
+      return item.category === "Vehicles"
+  })
+
+  console.log(vehicles)
+
   return (
     <Grid container item>
-      {items.map((item) => {
+      {vehicles.map((vehicle) => {
         return (
           <Grid
             container
@@ -47,13 +53,14 @@ export default function ItemIndex(props) {
             columns={6}
             xs
             padding={0.8}
+            key={vehicle.id}
           >
-            <Card key={item.id} xs={1} sx={{ maxWidth: 200 }}>
-              <CardActionArea onClick={() => handleClick(item)}>
-                <img src={item.image_url} height="150px" width="180px" />
+            <Card xs={1} sx={{ maxWidth: 200 }}>
+              <CardActionArea onClick={() => handleClick(vehicle)}>
+                <img src={vehicle.image_url} height="150px" width="180px" />
                 <CardContent>
                   <Typography fontWeight="fontWeightBold">
-                    {item.name}
+                    {vehicle.name}
                   </Typography>
                 </CardContent>
                 <Grid
@@ -63,14 +70,14 @@ export default function ItemIndex(props) {
                   padding={1}
                   alignItems="flex-start"
                 >
-                  <Typography>{item.category}</Typography>
+                  <Typography>{vehicle.category}</Typography>
                   <Grid
                     container
                     item
                     direction="row"
                     justifyContent="space-between"
                   >
-                    <Typography>${item.price}</Typography>
+                    <Typography>${vehicle.price}</Typography>
                   </Grid>
                 </Grid>
               </CardActionArea>

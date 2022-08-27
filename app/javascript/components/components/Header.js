@@ -51,6 +51,9 @@ export default function Header(props) {
           <Grid item padding={0.5}>
             {logged_in && <Link to="ItemNew">Create Item</Link>}
           </Grid>
+          <Grid item padding={0.5}>
+            <Link to="/vehicles">Vehicles</Link>
+          </Grid>
         </Grid>
 
         <Grid container item direction="row" justifyContent="center" xs={4}>

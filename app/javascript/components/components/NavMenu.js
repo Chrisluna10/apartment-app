@@ -38,8 +38,8 @@ export default function BasicMenu() {
       .then((res) => {
         if (res.status === "signed_out") {
           alert("Signed Out")
-          window.location.reload(false)
           navigate("/")
+          window.location.reload(false)
         } else {
           alert("user not signed out")
         }

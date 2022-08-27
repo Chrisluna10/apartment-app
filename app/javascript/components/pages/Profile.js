@@ -48,8 +48,9 @@ export default function Profile() {
             columns={6}
             xs
             padding={0.8}
+            key={item.id}
           >
-            <Card key={item.id} xs={1} sx={{ maxWidth: 200 }}>
+            <Card xs={1} sx={{ maxWidth: 200 }}>
               <CardActionArea onClick={() => handleClick(item)}>
                 <img src={item.image_url} height="150px" width="180px" />
                 <CardContent>
