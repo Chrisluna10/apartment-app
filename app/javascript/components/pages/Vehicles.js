@@ -10,24 +10,8 @@ import {
 } from "@mui/material"
 
 export default function Vehicles(props) {
-  const [items, setItems] = useState([])
   const navigate = useNavigate()
-
-  function vehicleIndex() {
-    fetch("http://localhost:3000/items", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((itemsArray) => setItems(itemsArray))
-      .catch((err) => console.log(err))
-  }
-
-  useEffect(() => {
-    vehicleIndex()
-  }, [])
+  let { items } = props
 
   const handleClick = (item) => {
     navigate({
@@ -35,11 +19,9 @@ export default function Vehicles(props) {
     })
   }
 
-  const vehicles = items.filter(item => {
-      return item.category === "Vehicles"
+  const vehicles = items.filter((item) => {
+    return item.category === "Vehicles"
   })
-
-  console.log(vehicles)
 
   return (
     <Grid container item>

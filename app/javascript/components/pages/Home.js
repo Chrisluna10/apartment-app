@@ -10,24 +10,9 @@ import {
 } from "@mui/material"
 
 export default function Home(props) {
-  const [items, setItems] = useState([])
   const navigate = useNavigate()
-
-  function itemIndex() {
-    fetch("http://localhost:3000/items", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((itemsArray) => setItems(itemsArray))
-      .catch((err) => console.log(err))
-  }
-
-  useEffect(() => {
-    itemIndex()
-  }, [])
+  let { items } = props
+ 
 
   const handleClick = (item) => {
     navigate({
