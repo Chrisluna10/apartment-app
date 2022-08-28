@@ -9,7 +9,17 @@ import Item from "./pages/ItemShow"
 import Profile from "./pages/Profile"
 import UserItemShow from "./pages/UserItemShow"
 import ItemEdit from "./pages/ItemEdit"
-import Vehicles from "./pages/Vehicles"
+import Vehicles from "./pages/categories/Vehicles"
+import HomeAndGarden from "./pages/categories/HomeAndGarden"
+import PetSupplies from "./pages/categories/PetSupplies"
+import SportsAndOutdoors from "./pages/categories/SportsAndOutdoors"
+import ToysAndGames from "./pages/categories/ToysGamesHobbies"
+import HealthAndBeauty from "./pages/categories/HealthAndBeauty"
+import ElectronicsAndMedia from "./pages/categories/ElectronicsAndMedia"
+import CollectiblesAndArt from "./pages/categories/CollectiblesAndArt"
+import ClothingShoesAccessories from "./pages/categories/ClothingShoesAccessories"
+import Wedding from "./pages/categories/Wedding"
+import BabyAndKids from "./pages/categories/BabyAndKids"
 
 export default function App(props) {
   const [items, setItems] = useState([])
@@ -41,6 +51,16 @@ export default function App(props) {
         <Route path="profile/item/:id" element={<UserItemShow />} />
         <Route path="edititem/:id" element={<ItemEdit />} />
         <Route path="vehicles" element={<Vehicles items={items}/>} />
+        <Route path="home&garden" element={<HomeAndGarden items={items}/>} />
+        <Route path="petsupplies" element={<PetSupplies items={items}/>} />
+        <Route path="wedding" element={<Wedding items={items}/>} />
+        <Route path="toys" element={<ToysAndGames items={items}/>} />
+        <Route path="sports&outdoors" element={<SportsAndOutdoors items={items}/>} />
+        <Route path="health&beauty" element={<HealthAndBeauty items={items}/>} />
+        <Route path="electronics&media" element={<ElectronicsAndMedia items={items}/>} />
+        <Route path="collectibles&art" element={<CollectiblesAndArt items={items}/>} />
+        <Route path="clothing" element={<ClothingShoesAccessories items={items}/>} />
+        <Route path="baby&kids" element={<BabyAndKids items={items}/>} />
       </Routes>
       <Footer />
     </Router>

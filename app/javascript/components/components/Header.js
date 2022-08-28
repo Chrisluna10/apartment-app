@@ -102,34 +102,34 @@ export default function Header(props) {
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/sports&outdoors">
               <Typography fontSize="15.5px">Sports & Outdoors</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
-              <Typography fontSize="15.5px">Electronics & Music</Typography>
+            <Link to="/electronics&media">
+              <Typography fontSize="15.5px">Electronics & Media</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/home&garden">
               <Typography fontSize="15.5px">Home & Garden</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/clothing">
               <Typography fontSize="15.5px">
                 Clothing, Shoes, & Accessories
               </Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/baby&kids">
               <Typography fontSize="15.5px">Baby & Kids</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/toys">
               <Typography fontSize="15.5px">
                 {" "}
                 Toys, Games & Hobbies
@@ -137,22 +137,22 @@ export default function Header(props) {
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
-              <Typography fontSize="15.5px">Collecti & Art</Typography>
+            <Link to="/collectibles&art">
+              <Typography fontSize="15.5px">Collectibles & Art</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/petsupplies">
               <Typography fontSize="15.5px">Pet Supplies</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/health&beauty">
               <Typography fontSize="15.5px">Health & Beauty</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/wedding">
               <Typography fontSize="15.5px">Wedding</Typography>
             </Link>
           </Grid>

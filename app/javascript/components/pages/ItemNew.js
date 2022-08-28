@@ -35,13 +35,13 @@ export default function ItemNew() {
               Electronics & Media
             </MenuItem>
             <MenuItem value={"Home & Garden"}>Home & Garden</MenuItem>
-            <MenuItem value={"CLothing, Shoes, & Accessories"}>
-              CLothing, Shoes, & Accessories
+            <MenuItem value={"Clothing, Shoes & Accessories"}>
+              Clothing, Shoes & Accessories
             </MenuItem>
             <MenuItem value={"Baby & Kids"}>Baby & Kids</MenuItem>
             <MenuItem value={"Vehicles"}>Vehicles</MenuItem>
-            <MenuItem value={"Toys, Games, & Hobbies"}>
-              Toys, Games, & Hobbies
+            <MenuItem value={"Toys, Games & Hobbies"}>
+              Toys, Games & Hobbies
             </MenuItem>
             <MenuItem value={"Sports & Outdoors"}>Sports & Outdoors</MenuItem>
             <MenuItem value={"Collectibles & Art"}>Collectibles & Art</MenuItem>
