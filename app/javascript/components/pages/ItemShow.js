@@ -6,10 +6,17 @@ import {
   CardContent,
   Grid,
   Button,
+  Box,
 } from "@mui/material"
 // import Car from "../../Assets/Car.png"
 import { useNavigate } from "react-router"
 import { useParams } from "react-router-dom"
+
+const styles = {
+  borderStyle: {
+    
+  }
+}
 
 export default function Item(props) {
   const [item, setItem] = useState({})
@@ -39,7 +46,9 @@ export default function Item(props) {
           price: res.price,
           description: res.description,
           image: res.image_url,
-          username: res.username
+          username: res.username,
+          time: res.formatted_time,
+          user_created: res.user_created,
         })
       )
       .catch((err) => console.log(err))
@@ -49,36 +58,68 @@ export default function Item(props) {
   }, [])
 
   return (
-    <Grid container direction="row" justifyContent="center">
-      <Grid container item direction="row" justifyContent="flex-start" xs={18}>
-        {item && (
-          <Grid>
-            <img src={item.image} height={300} width={300} />
-            <Grid>
-              <Typography>{item.name}</Typography>
-              <Typography>posted by: {item.username}</Typography>
+    <>
+      {item && (
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-start"
+          columns={12}
+        >
+          <Grid
+            container
+            item
+            xs={8}
+            justifyContent="center"
+            backgroundColor="#f2f2f2"
+          >
+            <Grid item>
+              <Box
+                component="img"
+                sx={{
+                  height: 500,
+                  width: 600,
+                }}
+                src={item.image}
+              />
             </Grid>
+          </Grid>
+
+          <Grid container item xs={4} direction="column">
             <Grid
               container
               item
               direction="column"
               paddingLeft={1.5}
               alignItems="flex-start"
+              xs={8}
+              borderBottom="1px solid #9b9ba4"
             >
+              <Typography fontWeight="bold" fontSize={35}>
+                {item.name}
+              </Typography>
+              <Typography fontWeight="bold" fontSize={40}>
+                ${item.price}
+              </Typography>
               <Typography>{item.category}</Typography>
-              <Grid
-                container
-                item
-                direction="row"
-                justifyContent="space-between"
-              >
-                <Typography>${item.price}</Typography>
-              </Grid>
               <Typography>{item.description}</Typography>
+              <Typography>date posted: {item.time}</Typography>
+            </Grid>
+
+            <Grid
+              container
+              item
+              direction="column"
+              paddingLeft={1.5}
+              alignItems="flex-start"
+              xs={4}
+            >
+              <Typography>posted by: {item.username}</Typography>
+              <Typography>member since {item.user_created}</Typography>
             </Grid>
           </Grid>
-        )}
-      </Grid>
-    </Grid>
+        </Grid>
+      )}
+    </>
   )
 }

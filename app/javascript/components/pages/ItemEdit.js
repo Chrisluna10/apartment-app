@@ -120,7 +120,7 @@ export default function ItemEdit() {
     )
   }
   return (
-    <Grid container item border="2px solid red">
+    <Grid container item >
       <Form />
     </Grid>
   )

@@ -9,10 +9,26 @@ import {
   Grid,
 } from "@mui/material"
 
+const styles = {
+  cardAction: {
+    "&:hover $focusHighlight": {
+      opacity: 0
+    }
+  },
+  cardStyle: {
+    display: "block",
+    height: "250px",
+    maxWidth: "175px",
+  },
+  gridContainer: {
+    paddingLeft: "15px",
+    paddingRight: "5px"
+  }
+}
+
 export default function Home(props) {
   const navigate = useNavigate()
   let { items } = props
- 
 
   const handleClick = (item) => {
     navigate({
@@ -21,44 +37,31 @@ export default function Home(props) {
   }
 
   return (
-    <Grid container item>
+    <Grid container columns={14} style={styles.gridContainer}>
       {items.map((item) => {
         return (
-          <Grid
-            container
-            item
-            direction="row"
-            justifyContent="center"
-            columns={6}
-            xs
-            padding={0.8}
-            key={item.id}
-          >
-            <Card xs={1} sx={{ maxWidth: 200 }}>
+          <Grid item xs={14} sm={3.5} md={2} padding={0.8} key={item.id}>
+            <Card style={styles.cardStyle}>
               <CardActionArea onClick={() => handleClick(item)}>
                 <img src={item.image_url} height="150px" width="180px" />
                 <CardContent>
-                  <Typography fontWeight="fontWeightBold">
-                    {item.name}
-                  </Typography>
-                </CardContent>
-                <Grid
-                  container
-                  item
-                  direction="column"
-                  padding={1}
-                  alignItems="flex-start"
-                >
-                  <Typography>{item.category}</Typography>
                   <Grid
                     container
                     item
-                    direction="row"
-                    justifyContent="space-between"
+                    alignItems="flex-start"
+                    justifyContent="center"
+                    direction="column"
                   >
-                    <Typography>${item.price}</Typography>
+                    <Grid item>
+                      <Typography fontSize={18} fontWeight="fontWeightBold">
+                        {item.name}
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                      <Typography fontSize={14}>${item.price}</Typography>
+                    </Grid>
                   </Grid>
-                </Grid>
+                </CardContent>
               </CardActionArea>
             </Card>
           </Grid>

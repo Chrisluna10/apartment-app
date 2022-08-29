@@ -62,23 +62,24 @@ export default function UserItemShow(props) {
       {item && (
         <Grid
           container
-          item
           direction="row"
           justifyContent="flex-start"
           columns={12}
         >
-          <Box
-            border="solid green 2px"
-            component="img"
-            xs={8}
-            sx={{
-              height: 500,
-              width: 600,
-            }}
-            src={item.image}
-          />
+          <Grid container item xs={8} justifyContent="center">
+            <Grid item>
+              <Box
+                component="img"
+                sx={{
+                  height: 500,
+                  width: 600,
+                }}
+                src={item.image}
+              />
+            </Grid>
+          </Grid>
 
-          <Grid container item border="solid red 2px" xs={4}>
+          <Grid container item xs={4}>
             <Grid
               container
               item
@@ -86,9 +87,11 @@ export default function UserItemShow(props) {
               paddingLeft={1.5}
               alignItems="flex-start"
             >
-              <Typography fontWeight="bold" fontSize={40}>
+              <Typography fontWeight="bold" fontSize={35}>
                 {item.name}
               </Typography>
+              <Typography fontWeight="bold" fontSize={40}>${item.price}</Typography>
+
             </Grid>
             <Grid
               container
@@ -98,14 +101,6 @@ export default function UserItemShow(props) {
               alignItems="flex-start"
             >
               <Typography>{item.category}</Typography>
-              <Grid
-                container
-                item
-                direction="row"
-                justifyContent="space-between"
-              >
-                <Typography>${item.price}</Typography>
-              </Grid>
               <Typography>{item.description}</Typography>
             </Grid>
             <Button onClick={() => deleteItem()}>

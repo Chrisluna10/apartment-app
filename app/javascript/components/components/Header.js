@@ -3,6 +3,14 @@ import { Link, useNavigate } from "react-router-dom"
 import { Button, Grid, Typography, Box } from "@mui/material"
 import NavMenu from "./NavMenu"
 import LoginModal from "./LoginModal"
+import SearchBar from "./SearchBar"
+
+const styles = {
+  linkStyle: {
+    textDecoration: "none",
+    color: "#121212",
+  },
+}
 
 export default function Header(props) {
   const [userInfo, setUserInfo] = useState([])
@@ -52,19 +60,17 @@ export default function Header(props) {
             container
             item
             direction="row"
-            xs={4}
+            xs={6}
             justifyContent="flex-start"
           >
             <Grid item padding={0.5}>
-              <Link to="/">Home</Link>
+              <Link to="/" style={styles.linkStyle}>
+                <Typography fontSize="20px">Marketplace App</Typography>
+              </Link>
             </Grid>
             <Grid item padding={0.5}>
-              {logged_in && <Link to="ItemNew">Create Item</Link>}
+              <SearchBar />
             </Grid>
-          </Grid>
-
-          <Grid container item direction="row" justifyContent="center" xs={4}>
-            <Typography fontSize="20px"> Marketplace App</Typography>
           </Grid>
 
           <Grid
@@ -73,7 +79,7 @@ export default function Header(props) {
             direction="row"
             alignItems="center"
             justifyContent="flex-end"
-            xs={4}
+            xs={6}
           >
             <Grid item padding={0.5}>
               {!logged_in && <LoginModal />}
@@ -95,69 +101,68 @@ export default function Header(props) {
           direction="row"
           justifyContent="center"
           alignItems="center"
+          paddingBottom={1}
+          paddingTop={1}
         >
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/vehicles" style={styles.linkStyle}>
               <Typography fontSize="15.5px">Vehicles </Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/sports&outdoors">
+            <Link to="/sports&outdoors" style={styles.linkStyle}>
               <Typography fontSize="15.5px">Sports & Outdoors</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/electronics&media">
+            <Link to="/electronics&media" style={styles.linkStyle}>
               <Typography fontSize="15.5px">Electronics & Media</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/home&garden">
+            <Link to="/home&garden" style={styles.linkStyle}>
               <Typography fontSize="15.5px">Home & Garden</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/clothing">
+            <Link to="/clothing" style={styles.linkStyle}>
               <Typography fontSize="15.5px">
                 Clothing, Shoes, & Accessories
               </Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/baby&kids">
+            <Link to="/baby&kids" style={styles.linkStyle}>
               <Typography fontSize="15.5px">Baby & Kids</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/toys">
-              <Typography fontSize="15.5px">
-                {" "}
-                Toys, Games & Hobbies
-              </Typography>
+            <Link to="/toys" style={styles.linkStyle}>
+              <Typography fontSize="15.5px"> Toys, Games & Hobbies</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/collectibles&art">
+            <Link to="/collectibles&art" style={styles.linkStyle}>
               <Typography fontSize="15.5px">Collectibles & Art</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/petsupplies">
+            <Link to="/petsupplies" style={styles.linkStyle}>
               <Typography fontSize="15.5px">Pet Supplies</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/health&beauty">
+            <Link to="/health&beauty" style={styles.linkStyle}>
               <Typography fontSize="15.5px">Health & Beauty</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/wedding">
+            <Link to="/wedding" style={styles.linkStyle}>
               <Typography fontSize="15.5px">Wedding</Typography>
             </Link>
           </Grid>
           <Grid item padding={0.5}>
-            <Link to="/vehicles">
+            <Link to="/vehicles" style={styles.linkStyle}>
               <Typography fontSize="15.5px">More</Typography>
             </Link>
           </Grid>

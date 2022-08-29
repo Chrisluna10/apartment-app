@@ -6,14 +6,13 @@ export default function Footer() {
   return (
     <Grid
       container
-      item
       borderTop="1px solid #9b9ba4"
-      height="40px"
       sx={{
         position: "relative",
         left: 0,
         bottom: 0,
         right: 0,
+        height: "40px"
       }}
     >
       <Typography>Footer</Typography>

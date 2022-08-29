@@ -83,7 +83,7 @@ export default function ItemNew() {
   }
 
   return (
-    <Grid container item border="2px solid red">
+    <Grid container item>
       <Grid container item direction="column" alignItems="center" spacing={5}>
         <>
           <Grid item>

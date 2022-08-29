@@ -19,6 +19,10 @@ export default function BasicMenu() {
     navigate("/profile")
   }
 
+  const addItemRoute = () => {
+    navigate("/itemnew")
+  }
+
   const buttonStyle = {
     "&:hover": {
       backgroundColor: "transparent",
@@ -68,6 +72,7 @@ export default function BasicMenu() {
         }}
       >
         <MenuItem onClick={profileRoute}>Profile</MenuItem>
+        <MenuItem onClick={addItemRoute}>Add Item</MenuItem>
         <MenuItem onClick={signOut}>Logout</MenuItem>
       </Menu>
     </div>
