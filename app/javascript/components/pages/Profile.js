@@ -4,7 +4,7 @@ import {
   CardContent,
   Grid,
   Typography,
-  Button
+  Button,
 } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
@@ -14,7 +14,6 @@ export default function Profile() {
   const [items, setItems] = useState([])
   const navigate = useNavigate()
   const params = useParams()
- 
 
   function userItems() {
     fetch("http://localhost:3000/user_index", {
@@ -37,41 +36,42 @@ export default function Profile() {
       pathname: `item/${item.id}`,
     })
   }
-
   return (
-    <Grid container item  >
-    {items.map((item) => {
-      return (
-        <Grid container item direction="row" justifyContent="center" columns={6} xs padding={.8}>
-
-        <Card key={item.id} xs={1} sx={{ maxWidth: 200 }} >
-          <CardActionArea onClick={() => handleClick(item)}>
-            <img src={item.image.url} height='150px' width='180px'/>
-            <CardContent>
-              <Typography fontWeight="fontWeightBold">{item.name}</Typography>
-            </CardContent>
-            <Grid
-              container
-              item
-              direction="column"
-              padding={1}
-              alignItems="flex-start"
-            >
-              <Typography>{item.category}</Typography>
-              <Grid
-                container
-                item
-                direction="row"
-                justifyContent="space-between"
-              >
-                <Typography>${item.price}</Typography>
-              </Grid>
+    <Grid container item justifyContent="center">
+      <Typography fontWeight="bold" fontSize="30px">
+        Selling
+      </Typography>
+      {items.map((item) => {
+        console.log(item)
+        return (
+          <Grid container justifyContent="center" padding={0.8} key={item.id}>
+            <Grid item xs={4.5}>
+              <Card>
+                <CardActionArea onClick={() => handleClick(item)}>
+                  <CardContent>
+                    <Grid container direction="row" spacing={4}>
+                      <Grid item>
+                        <img
+                          src={item.image_url}
+                          height="80px"
+                          width="95px"
+                        />
+                      </Grid>
+                      <Grid item>
+                        <Typography fontWeight="fontWeightBold" fontSize={14}>
+                          {item.name}
+                        </Typography>
+                        <Typography fontSize={14}>${item.price}</Typography>
+                        <Typography fontSize={14}>Created {item.formatted_time}</Typography>
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
             </Grid>
-          </CardActionArea>
-        </Card>
-        </Grid>
-      )
-    })}
-  </Grid>
+          </Grid>
+        )
+      })}
+    </Grid>
   )
 }

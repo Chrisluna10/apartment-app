@@ -1,4 +1,12 @@
-import { Button, Grid, TextField } from "@mui/material"
+import {
+  Button,
+  Grid,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material"
 import { Formik } from "formik"
 import { useNavigate } from "react-router-dom"
 import React, { useState } from "react"
@@ -8,8 +16,45 @@ export default function ItemNew() {
   const [image, setImage] = useState(null)
   const [name, setName] = useState("")
   const [category, setCategory] = useState("")
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState("")
   const [description, setDescription] = useState("")
+
+  const Selector = () => {
+    return (
+      <Grid container item width="220px">
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Category</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={category}
+            label="Category"
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <MenuItem value={"Electronics & Media"}>
+              Electronics & Media
+            </MenuItem>
+            <MenuItem value={"Home & Garden"}>Home & Garden</MenuItem>
+            <MenuItem value={"Clothing, Shoes & Accessories"}>
+              Clothing, Shoes & Accessories
+            </MenuItem>
+            <MenuItem value={"Baby & Kids"}>Baby & Kids</MenuItem>
+            <MenuItem value={"Vehicles"}>Vehicles</MenuItem>
+            <MenuItem value={"Toys, Games & Hobbies"}>
+              Toys, Games & Hobbies
+            </MenuItem>
+            <MenuItem value={"Sports & Outdoors"}>Sports & Outdoors</MenuItem>
+            <MenuItem value={"Collectibles & Art"}>Collectibles & Art</MenuItem>
+            <MenuItem value={"Pet Supplies"}>Pet Supplies</MenuItem>
+            <MenuItem value={"Health & Beauty"}>Health & Beauty</MenuItem>
+            <MenuItem value={"Wedding"}>Wedding</MenuItem>
+            <MenuItem value={"Business Equipment"}>Business Equipment</MenuItem>
+            <MenuItem value={"Tickets"}>Tickets</MenuItem>
+          </Select>
+        </FormControl>
+      </Grid>
+    )
+  }
 
   function addItem(e) {
     e.preventDefault()
@@ -23,7 +68,7 @@ export default function ItemNew() {
 
     fetch("http://localhost:3000/items", {
       method: "POST",
-      body: formData
+      body: formData,
     })
       .then((res) => res.json())
       .then((res) => {
@@ -38,7 +83,7 @@ export default function ItemNew() {
   }
 
   return (
-    <Grid container item border="2px solid red">
+    <Grid container item>
       <Grid container item direction="column" alignItems="center" spacing={5}>
         <>
           <Grid item>
@@ -51,20 +96,14 @@ export default function ItemNew() {
             />
           </Grid>
           <Grid item>
-            <TextField
-              id="standard-basic"
-              label="Category"
-              variant="standard"
-              onChange={(e) => setCategory(e.target.value)}
-              value={category}
-            />
+            <Selector />
           </Grid>
           <Grid item>
             <TextField
               id="standard-basic"
               label="Price"
               variant="standard"
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={(e) => setPrice(parseFloat(e.target.value))}
               value={price}
             />
           </Grid>
@@ -87,7 +126,6 @@ export default function ItemNew() {
               accept="image/*"
             />
             {/* {image && <img src={image.url} height='150px' width='180px'/>} */}
-
           </Grid>
           <Grid item>
             <Button onClick={addItem}> Submit</Button>

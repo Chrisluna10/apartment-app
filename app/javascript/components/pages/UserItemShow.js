@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react"
-import {
-  Typography,
-  Card,
-  CardActionArea,
-  CardContent,
-  Grid,
-  Button,
-} from "@mui/material"
+import { Typography, Grid, Button, Box } from "@mui/material"
 import { useNavigate } from "react-router"
 import { useParams } from "react-router-dom"
 
@@ -23,7 +16,15 @@ export default function UserItemShow(props) {
       },
     })
       .then((res) => res.json())
-      .then((item) => setItem(item))
+      .then((res) =>
+        setItem({
+          name: res.name,
+          category: res.category,
+          price: res.price,
+          description: res.description,
+          image: res.image_url,
+        })
+      )
       .catch((err) => console.log(err))
   }
 
@@ -57,13 +58,40 @@ export default function UserItemShow(props) {
   }
 
   return (
-    <Grid container direction="row" justifyContent="center">
-      <Grid container item direction="row" justifyContent="flex-start" xs={18}>
-        {item && (
-          <Grid>
-            <img src={item.image.url} height={170} />
-            <Grid>
-              <Typography>{item.name}</Typography>
+    <>
+      {item && (
+        <Grid
+          container
+          direction="row"
+          justifyContent="flex-start"
+          columns={12}
+        >
+          <Grid container item xs={8} justifyContent="center">
+            <Grid item>
+              <Box
+                component="img"
+                sx={{
+                  height: 500,
+                  width: 600,
+                }}
+                src={item.image}
+              />
+            </Grid>
+          </Grid>
+
+          <Grid container item xs={4}>
+            <Grid
+              container
+              item
+              direction="column"
+              paddingLeft={1.5}
+              alignItems="flex-start"
+            >
+              <Typography fontWeight="bold" fontSize={35}>
+                {item.name}
+              </Typography>
+              <Typography fontWeight="bold" fontSize={40}>${item.price}</Typography>
+
             </Grid>
             <Grid
               container
@@ -73,14 +101,6 @@ export default function UserItemShow(props) {
               alignItems="flex-start"
             >
               <Typography>{item.category}</Typography>
-              <Grid
-                container
-                item
-                direction="row"
-                justifyContent="space-between"
-              >
-                <Typography>${item.price}</Typography>
-              </Grid>
               <Typography>{item.description}</Typography>
             </Grid>
             <Button onClick={() => deleteItem()}>
@@ -90,8 +110,8 @@ export default function UserItemShow(props) {
               <Typography>Edit Item</Typography>
             </Button>
           </Grid>
-        )}
-      </Grid>
-    </Grid>
+        </Grid>
+      )}
+    </>
   )
 }

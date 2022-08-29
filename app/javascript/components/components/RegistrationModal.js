@@ -35,6 +35,11 @@ export default function RegistrationModal(props) {
   }
 
   const validationSchema = Yup.object().shape({
+    username: Yup.string()
+      .label("Username")
+      .required("Please enter your username")
+      .min(6, "Must be at least 6 characters")
+      .max(12, "Must be less than 12 characters"),
     email: Yup.string().label("Email").required("Please enter your email"),
     password: Yup.string()
       .label("Password")
@@ -55,6 +60,7 @@ export default function RegistrationModal(props) {
   // const [errorMessage, setErrorMessage] = useState("")
   // const [hasError, setError] = useState(false)
   const navigate = useNavigate()
+  const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [password_confirmation, setPasswordConfirmation] = useState("")
@@ -85,6 +91,7 @@ export default function RegistrationModal(props) {
       },
       body: JSON.stringify({
         user: {
+          username: username,
           email: email,
           password: password,
           password_confirmation: password_confirmation,
@@ -92,10 +99,13 @@ export default function RegistrationModal(props) {
       }),
     })
       .then((res) => res.json())
+      // .then((res) => console.log(res.status))
       .then((res) => {
         if (res.status === "created") {
-          alert("Account added. Please log in.")
-          setOpen(false)
+          alert("Account added.")
+          window.location.reload(false)
+        } else if (res.status === "username_exists") {
+          alert("username taken")
         } else {
           alert("registration unsucessful")
         }
@@ -113,6 +123,14 @@ export default function RegistrationModal(props) {
         height={400}
         width={250}
       >
+        <Grid container item justifyContent="center" paddingBottom={1}>
+          <TextField
+            name="username"
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+        </Grid>
         <Grid container item justifyContent="center" paddingBottom={1}>
           <TextField
             name="email"
@@ -140,14 +158,18 @@ export default function RegistrationModal(props) {
         <Button onClick={register} sx={{ ...buttonStyle }}>
           Register
         </Button>
-        <Button onClick={handleClose} sx={{ ...buttonStyle }}>Go Back</Button>
+        <Button onClick={handleClose} sx={{ ...buttonStyle }}>
+          Go Back
+        </Button>
       </Grid>
     )
   }
 
   return (
     <>
-      <Button onClick={handleOpen} sx={{ ...buttonStyle }}>Register</Button>
+      <Button onClick={handleOpen} sx={{ ...buttonStyle }}>
+        Register
+      </Button>
       <Modal
         hideBackdrop
         open={open}

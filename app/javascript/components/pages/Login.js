@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
 const loginError = () => {
   return (
     <Grid>
-      <Typography>Incorrect email or password</Typography>
+      <Typography>Incorrect username or password</Typography>
     </Grid>
   )
 }
@@ -29,12 +29,10 @@ const buttonStyle = {
 export default function UserLogin(props) {
   const [loginFailed, setLoginFailed] = useState(false)
   const navigate = useNavigate()
-  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
-  function login(e) {
-    e.preventDefault()
-
+  function login() {
     fetch(`http://localhost:3000/users/sign_in`, {
       method: "POST",
       headers: {
@@ -42,7 +40,7 @@ export default function UserLogin(props) {
       },
       body: JSON.stringify({
         user: {
-          email: email,
+          username: username,
           password: password,
         },
       }),
@@ -50,6 +48,7 @@ export default function UserLogin(props) {
       .then((res) => res.json())
       .then((res) => {
         if (res.status === "logged_in") {
+          window.location.reload(false)
           navigate("/")
         } else {
           alert("sign in unsucessful")
@@ -70,10 +69,10 @@ export default function UserLogin(props) {
       >
         <Grid container item justifyContent="center" paddingBottom={1}>
           <TextField
-            name="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
+            name="username"
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
           />
         </Grid>
         <Grid container item justifyContent="center" paddingBottom={1}>
@@ -85,7 +84,7 @@ export default function UserLogin(props) {
           />
         </Grid>
         <Button onClick={login} sx={{ ...buttonStyle }}>
-          <Typography>Log In</Typography>
+          Log In
         </Button>
         <RegistrationModal />
       </Grid>
