@@ -2,20 +2,19 @@ import { Link } from "react-router-dom"
 import { Typography, Grid } from "@mui/material"
 import React from "react"
 
+const FooterContainer = {
+  position: "relative",
+  bottom: 0,
+  minHeight: 40,
+  maxHeight: 100,
+  background: "#00a87e"
+}
+
 export default function Footer() {
   return (
-    <Grid
-      container
-      borderTop="1px solid #9b9ba4"
-      sx={{
-        position: "relative",
-        left: 0,
-        bottom: 0,
-        right: 0,
-        height: "40px"
-      }}
+    <Grid style={FooterContainer}
     >
-      <Typography>Footer</Typography>
+      <Typography color="white">Footer</Typography>
     </Grid>
   )
 }

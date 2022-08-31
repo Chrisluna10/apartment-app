@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :apartments
   has_many :items
+  # has_one_attached :avatar
   validates :username, uniqueness: true, presence: true, length: { in: 6..12 }
 end

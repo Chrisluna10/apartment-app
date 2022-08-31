@@ -6,7 +6,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import ItemNew from "./pages/ItemNew"
 import Item from "./pages/ItemShow"
-import Profile from "./pages/Profile"
+import Selling from "./pages/Selling"
 import UserItemShow from "./pages/UserItemShow"
 import ItemEdit from "./pages/ItemEdit"
 import Vehicles from "./pages/categories/Vehicles"
@@ -20,6 +20,7 @@ import CollectiblesAndArt from "./pages/categories/CollectiblesAndArt"
 import ClothingShoesAccessories from "./pages/categories/ClothingShoesAccessories"
 import Wedding from "./pages/categories/Wedding"
 import BabyAndKids from "./pages/categories/BabyAndKids"
+import Account from "./pages/Account"
 
 export default function App(props) {
   const [items, setItems] = useState([])
@@ -47,8 +48,8 @@ export default function App(props) {
         <Route path="/" element={<Home {...props} items={items}/>} />
         <Route path="item/:id" element={<Item />} />
         <Route path="/itemnew" element={<ItemNew {...props} />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="profile/item/:id" element={<UserItemShow />} />
+        <Route path="selling" element={<Selling />} />
+        <Route path="selling/item/:id" element={<UserItemShow />} />
         <Route path="edititem/:id" element={<ItemEdit />} />
         <Route path="vehicles" element={<Vehicles items={items}/>} />
         <Route path="home&garden" element={<HomeAndGarden items={items}/>} />
@@ -61,6 +62,7 @@ export default function App(props) {
         <Route path="collectibles&art" element={<CollectiblesAndArt items={items}/>} />
         <Route path="clothing" element={<ClothingShoesAccessories items={items}/>} />
         <Route path="baby&kids" element={<BabyAndKids items={items}/>} />
+        <Route path="account" element={<Account />} />
       </Routes>
       <Footer />
     </Router>
