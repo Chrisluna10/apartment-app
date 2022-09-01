@@ -8,7 +8,7 @@ set :repo_url, "https://github.com/Chrisluna10/marketplace-app.git"
 set :deploy_to, '/home/deploy/marketplace-app'
 set :branch, ENV['BRANCH'] if ENV['BRANCH']
 
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/master.key}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 set :keep_releases, 3
