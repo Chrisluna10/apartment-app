@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :items
   # has_one_attached :avatar
   validates :username, uniqueness: true, presence: true, length: { in: 6..12 }
+
 end

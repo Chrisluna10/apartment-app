@@ -4,7 +4,7 @@ import { Formik } from "formik"
 import React, { useState, useEffect } from "react"
 
 export default function Account() {
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState({})
 
   function userFetch() {
     fetch("http://localhost:3000/current_user", {
@@ -23,26 +23,51 @@ export default function Account() {
     userFetch()
   }, [])
 
-  console.log(user)
+  function userEdit(values) {
+    fetch("http://localhost:3000/users", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user: values,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      // .then((res) => {
+      //   if (res.status === "edit successful") {
+      //     alert("Account updated")
+      //     window.location.reload(false)
+      //   } else {
+      //     alert("Error")
+      //   }
+      // })
+      .catch((err) => console.log(err))
+  }
 
   const Form = () => {
     return (
       <Grid container item direction="column" alignItems="center" spacing={5}>
+        <Grid item>
+        <Typography fontWeight="bold" fontSize="35px">
+        Account Information
+      </Typography>
+      </Grid>
         {user && (
           <Formik
             initialValues={{
               username: user.username,
-              email: user.email
-              
+              email: user.email,
             }}
-            onSubmit={(values) => editItem(values)}
+            onSubmit={(values) => userEdit(values)}
           >
             {({ handleChange, handleSubmit, values }) => (
               <>
                 <Grid item>
                   <TextField
                     id="standard-basic"
-                    label="username"
+                    label="Username"
                     variant="standard"
                     onChange={handleChange("username")}
                     value={values.username}
@@ -58,7 +83,7 @@ export default function Account() {
                   />
                 </Grid>
                 <Grid item>
-                  <Button onClick={() => handleSubmit()}> Submit</Button>
+                  <Button onClick={() => handleSubmit()}>Edit Account Information</Button>
                 </Grid>
               </>
             )}
@@ -68,7 +93,7 @@ export default function Account() {
     )
   }
   return (
-    <Grid container item >
+    <Grid container justifyContent="center" direction="column">
       <Form />
     </Grid>
   )

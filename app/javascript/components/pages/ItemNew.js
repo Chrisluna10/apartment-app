@@ -11,6 +11,11 @@ import { Formik } from "formik"
 import { useNavigate } from "react-router-dom"
 import React, { useState } from "react"
 
+const textFieldStyle = {
+  paddingTop: "20px",
+  paddingBottom: "20px",
+}
+
 export default function ItemNew() {
   const navigate = useNavigate()
   const [image, setImage] = useState(null)
@@ -83,54 +88,81 @@ export default function ItemNew() {
   }
 
   return (
-    <Grid container item>
-      <Grid container item direction="column" alignItems="center" spacing={5}>
-        <>
-          <Grid item>
-            <TextField
-              id="standard-basic"
-              label="Name"
-              variant="standard"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
+    <Grid container direction="row">
+      <Grid
+        container
+        item
+        direction="column"
+        alignItems="flex-end"
+        xs={6}
+        paddingRight={8}
+      >
+        <Grid item style={textFieldStyle}>
+          <TextField
+            id="standard-basic"
+            label="Name"
+            variant="standard"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
+        </Grid>
+        <Grid item style={textFieldStyle}>
+          <Selector />
+        </Grid>
+        <Grid item style={textFieldStyle}>
+          <TextField
+            id="standard-basic"
+            label="Price"
+            variant="standard"
+            onChange={(e) => setPrice(parseFloat(e.target.value))}
+            value={price}
+          />
+        </Grid>
+        <Grid item style={textFieldStyle}>
+          <TextField
+            id="standard-basic"
+            label="Description"
+            variant="standard"
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+          />
+        </Grid>
+      </Grid>
+
+      <Grid
+        container
+        item
+        xs={6}
+        justifyContent="center"
+        alignItems="flex-start"
+        direction="column"
+        paddingLeft={8}
+      >
+        <Grid item paddingBottom="20px">
+          {image && (
+            <img
+              src={URL.createObjectURL(image)}
+              height="150px"
+              width="180px"
             />
-          </Grid>
-          <Grid item>
-            <Selector />
-          </Grid>
-          <Grid item>
-            <TextField
-              id="standard-basic"
-              label="Price"
-              variant="standard"
-              onChange={(e) => setPrice(parseFloat(e.target.value))}
-              value={price}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              id="standard-basic"
-              label="Description"
-              variant="standard"
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              name="image"
-              type="file"
-              label="image"
-              variant="standard"
-              onChange={(e) => setImage(e.target.files[0])}
-              accept="image/*"
-            />
-            {/* {image && <img src={image.url} height='150px' width='180px'/>} */}
-          </Grid>
-          <Grid item>
-            <Button onClick={addItem}> Submit</Button>
-          </Grid>
-        </>
+          )}
+        </Grid>
+        <Grid item style={textFieldStyle}>
+          <TextField
+            name="image"
+            type="file"
+            label="image"
+            variant="standard"
+            onChange={(e) => setImage(e.target.files[0])}
+            accept="image/*"
+          />
+        </Grid>
+      </Grid>
+
+      <Grid container alignItems="center" justifyContent="center">
+        <Grid item style={textFieldStyle}>
+          <Button onClick={addItem}> Submit</Button>
+        </Grid>
       </Grid>
     </Grid>
   )
