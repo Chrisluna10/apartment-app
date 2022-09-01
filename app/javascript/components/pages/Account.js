@@ -67,6 +67,7 @@ export default function Account() {
                 <Grid item>
                   <TextField
                     id="standard-basic"
+                    label="Username"
                     variant="standard"
                     onChange={handleChange("username")}
                     value={values.username}
@@ -75,13 +76,14 @@ export default function Account() {
                 <Grid item>
                   <TextField
                     id="standard-basic"
+                    label="Email"
                     variant="standard"
                     onChange={handleChange("email")}
                     value={values.email}
                   />
                 </Grid>
                 <Grid item>
-                  <Button onClick={() => handleSubmit()}> Submit</Button>
+                  <Button onClick={() => handleSubmit()}>Edit Account Information</Button>
                 </Grid>
               </>
             )}
@@ -92,9 +94,7 @@ export default function Account() {
   }
   return (
     <Grid container justifyContent="center" direction="column">
-   
       <Form />
- 
     </Grid>
   )
 }
