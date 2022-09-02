@@ -24,7 +24,7 @@ import Account from "./pages/Account"
 
 export default function App(props) {
   const [items, setItems] = useState([])
-
+  
   function itemIndex() {
     fetch("http://localhost:3000/items", {
       method: "GET",
@@ -36,7 +36,7 @@ export default function App(props) {
       .then((itemsArray) => setItems(itemsArray))
       .catch((err) => console.log(err))
   }
-
+  
   useEffect(() => {
     itemIndex()
   }, [])
