@@ -1,5 +1,5 @@
 import { Grid, TextField, Button, Typography } from "@mui/material"
-import * as React from "react"
+import React, { useState, useEffect } from "react"
 import SearchIcon from "@mui/icons-material/Search"
 import InputUnstyled from "@mui/base/InputUnstyled"
 import ButtonUnstyled, { buttonUnstyledClasses } from "@mui/base/ButtonUnstyled"
@@ -36,27 +36,6 @@ const CustomButton = styled(ButtonUnstyled)`
     cursor: not-allowed;
   }
 `
-
-const blue = {
-  100: "#DAECFF",
-  200: "#80BFFF",
-  400: "#3399FF",
-  600: "#0072E5",
-}
-
-const grey = {
-  50: "#F3F6F9",
-  100: "#E7EBF0",
-  200: "#E0E3E7",
-  300: "#CDD2D7",
-  400: "#B2BAC2",
-  500: "#A0AAB4",
-  600: "#6F7E8C",
-  700: "#3E5060",
-  800: "#2D3843",
-  900: "#1A2027",
-}
-
 const StyledInputElement = styled("input")(
   ({ theme }) => `
     width: 320px;
@@ -81,18 +60,18 @@ const StyledInputElement = styled("input")(
   `
 )
 
-const CustomInput = React.forwardRef(function CustomInput(props, ref) {
-  return (
-    <InputUnstyled
-      placeholder="Search"
-      components={{ Input: StyledInputElement }}
-      {...props}
-      ref={ref}
-    />
-  )
-})
-
 export default function SearchBar() {
+  const CustomInput = React.forwardRef(function CustomInput(props, ref) {
+    return (
+      <InputUnstyled
+        placeholder="Search"
+        components={{ Input: StyledInputElement }}
+        {...props}
+        ref={ref}
+      />
+    )
+  })
+
   return (
     <Grid container direction="row" width="349px">
       <Grid container item xs={11}>
