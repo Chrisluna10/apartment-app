@@ -69,9 +69,9 @@ export default function Header(props) {
                 <Typography color="#00a87e" fontSize="20px" fontWeight="bold">Marketplace App</Typography>
               </Link>
             </Grid>
-            <Grid item padding={1.5}>
+            {/* <Grid item padding={1.5}>
               <SearchBar />
-            </Grid>
+            </Grid> */}
           </Grid>
 
           <Grid
