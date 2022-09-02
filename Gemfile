@@ -53,3 +53,4 @@ gem "react-rails", "~> 2.6"
 gem "bootstrap", "~> 5.1"
 gem 'active_model_serializers'
 gem 'ransack'
+gem 'net-smtp'
