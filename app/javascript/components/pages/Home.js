@@ -17,8 +17,8 @@ const styles = {
   },
   cardStyle: {
     display: "block",
-    height: "250px",
-    maxWidth: "175px",
+    height: 250,
+    maxWidth: 175,
   },
   gridContainer: {
     paddingLeft: "15px",
@@ -40,10 +40,13 @@ export default function Home(props) {
     <Grid container columns={14} style={styles.gridContainer}>
       {items.map((item) => {
         return (
-          <Grid item xs={14} sm={3.5} md={2} padding={0.8} key={item.id}>
+          <Grid item xs={7} sm={3.5} md={2} padding={0.8} key={item.id}>
             <Card style={styles.cardStyle}>
               <CardActionArea onClick={() => handleClick(item)}>
-                <img src={item.image_url} height="150px" width="180px" />
+                <img src={item.image_url} style={{
+                  maxHeight: 150,
+                  maxWidth: 180
+                }}/>
                 <CardContent>
                   <Grid
                     container

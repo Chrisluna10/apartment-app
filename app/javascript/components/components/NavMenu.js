@@ -15,8 +15,12 @@ export default function BasicMenu() {
     setAnchorEl(null)
   }
 
-  const profileRoute = () => {
-    navigate("/profile")
+  const accountRoute = () => {
+    navigate("/account")
+  }
+
+  const sellingRoute = () => {
+    navigate("/selling")
   }
 
   const addItemRoute = () => {
@@ -71,7 +75,8 @@ export default function BasicMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={profileRoute}>Profile</MenuItem>
+        <MenuItem onClick={accountRoute}>Account</MenuItem>
+        <MenuItem onClick={sellingRoute}>Selling</MenuItem>
         <MenuItem onClick={addItemRoute}>Add Item</MenuItem>
         <MenuItem onClick={signOut}>Logout</MenuItem>
       </Menu>
