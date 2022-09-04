@@ -17,7 +17,7 @@ export default function Selling() {
   const params = useParams()
 
   function userItems() {
-    fetch("http://localhost:3000/user_index", {
+    fetch("https://marketplace-app-cl.herokuapp.com/user_index", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

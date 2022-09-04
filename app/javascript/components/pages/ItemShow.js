@@ -24,7 +24,7 @@ export default function Item(props) {
   const params = useParams()
 
   function fetchItem() {
-    fetch(`http://localhost:3000/items/${params.id}`, {
+    fetch(`https://marketplace-app-cl.herokuapp.com/items/${params.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

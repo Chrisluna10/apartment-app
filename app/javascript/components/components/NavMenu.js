@@ -35,7 +35,7 @@ export default function BasicMenu() {
   }
 
   function signOut() {
-    fetch("http://localhost:3000/users/sign_out", {
+    fetch("https://marketplace-app-cl.herokuapp.com/users/sign_out", {
       method: "GET",
       credentials: "include",
       headers: {

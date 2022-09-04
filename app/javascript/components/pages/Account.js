@@ -7,7 +7,7 @@ export default function Account() {
   const [user, setUser] = useState({})
 
   function userFetch() {
-    fetch("http://localhost:3000/current_user", {
+    fetch("https://marketplace-app-cl.herokuapp.com/current_user", {
       method: "GET",
       credentials: "include",
       mode: "cors",
@@ -24,7 +24,7 @@ export default function Account() {
   }, [])
 
   function userEdit(values) {
-    fetch("http://localhost:3000/users", {
+    fetch("https://marketplace-app-cl.herokuapp.com/users", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
