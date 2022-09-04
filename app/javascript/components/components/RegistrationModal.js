@@ -84,7 +84,7 @@ export default function RegistrationModal(props) {
   //   return false
   // }
   function register() {
-    fetch("http://localhost:3000/users", {
+    fetch("https://marketplace-app-cl.herokuapp.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -8,7 +8,20 @@
 
 users = [
   {
+    username: 'joerandom1',
     email: 'testing@test.com',
+    password: 'testing123',
+    password_confirmation: 'testing123'
+  },
+  {
+    username: 'joerandom2',
+    email: 'testing@test123.com',
+    password: 'testing123',
+    password_confirmation: 'testing123'
+  },
+  {
+    username: 'joerandom3',
+    email: 'test@test.com',
     password: 'testing123',
     password_confirmation: 'testing123'
   }
@@ -18,33 +31,30 @@ users.each do |attribute|
   User.create attribute
 end
 
-apartments = [
+items = [
   {
-    street: '123 Street',
-    city: 'SD',
-    state: 'CA',
-    manager: 'Joe',
-    email: 'joe@testing.com',
-    price: '1000',
-    bedrooms: 2,
-    bathrooms: 3,
-    pets: 'all pets welcome'
+    name: '123 Street',
+    category: 'SD',
+    price: 'CA',
+    description: 'Joe',
   },
   {
-    street: '456 Street',
-    city: 'SD',
-    state: 'CA',
-    manager: 'Joe',
-    email: 'joe@testing.com',
-    price: '1000',
-    bedrooms: 2,
-    bathrooms: 3,
-    pets: 'no snakes'
-  }
+    name: '123 Street',
+    category: 'SD',
+    price: 'CA',
+    description: 'Joe',
+  }, 
+  {
+    name: '123 Street',
+    category: 'SD',
+    price: 'CA',
+    description: 'Joe',
+  },
+  {
+    name: '123 Street',
+    category: 'SD',
+    price: 'CA',
+    description: 'Joe',
+  },
 ]
-
-first_user = User.where(email: 'testing@test.com').first
-
-apartments.each do |attribute|
-  first_user.apartments.create attribute
 end
