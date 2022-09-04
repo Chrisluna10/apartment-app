@@ -63,7 +63,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "apartment_app_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url__options ={
+  config.action_mailer.default_url_options ={
     host: 'https://marketplace-app-cl.herokuapp.com/'
   }
 
