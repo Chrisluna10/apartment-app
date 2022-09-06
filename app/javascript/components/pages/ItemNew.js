@@ -71,7 +71,7 @@ export default function ItemNew() {
     formData.append("[item]description", description)
     formData.append("[item]image", image)
 
-    fetch("http://localhost:3000/items", {
+    fetch("https://marketplace-app-cl.herokuapp.com/items", {
       method: "POST",
       body: formData,
     })

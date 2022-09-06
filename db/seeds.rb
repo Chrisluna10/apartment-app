@@ -6,45 +6,45 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-users = [
-  {
-    email: 'testing@test.com',
-    password: 'testing123',
-    password_confirmation: 'testing123'
-  }
-]
 
-users.each do |attribute|
-  User.create attribute
+10.times do
+  user = User.create!(
+    username: Faker::Internet.username(specifier: 6..12),
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
+  )
+  
+
+    3.times do
+    item = Item.create!(
+      user: user,
+      name: Faker::Lorem.words.join(""),
+      category: "Electronics & Media",
+      price: Faker::Number.between(from: 5, to:500),
+      description: Faker::Lorem.paragraphs.join("\n")
+      )
+    end
+    3.times do
+      item = Item.create!(
+        user: user,
+        name: Faker::Lorem.words.join(""),
+        category: "Home & Garden",
+        price: Faker::Number.between(from: 5, to:500),
+        description: Faker::Lorem.paragraphs.join("\n")
+        )
+      end
+      3.times do
+        item = Item.create!(
+          user: user,
+          name: Faker::Lorem.words.join(""),
+          category: "Clothing, Shoes & Accessories",
+          price: Faker::Number.between(from: 5, to:500),
+          description: Faker::Lorem.paragraphs.join("\n")
+          )
+        end
 end
 
-apartments = [
-  {
-    street: '123 Street',
-    city: 'SD',
-    state: 'CA',
-    manager: 'Joe',
-    email: 'joe@testing.com',
-    price: '1000',
-    bedrooms: 2,
-    bathrooms: 3,
-    pets: 'all pets welcome'
-  },
-  {
-    street: '456 Street',
-    city: 'SD',
-    state: 'CA',
-    manager: 'Joe',
-    email: 'joe@testing.com',
-    price: '1000',
-    bedrooms: 2,
-    bathrooms: 3,
-    pets: 'no snakes'
-  }
-]
+# users.each do |attribute|
+#   User.create attribute
+# end
 
-first_user = User.where(email: 'testing@test.com').first
-
-apartments.each do |attribute|
-  first_user.apartments.create attribute
-end

@@ -10,7 +10,7 @@ export default function ItemEdit() {
   const params = useParams()
 
   function fetchItem() {
-    fetch(`http://localhost:3000/items/${params.id}`, {
+    fetch(`https://marketplace-app-cl.herokuapp.com/items/${params.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export default function ItemEdit() {
   }, [])
 
   function editItem(values) {
-    fetch(`http://localhost:3000/items/${params.id}`, {
+    fetch(`https://marketplace-app-cl.herokuapp.com/items/${params.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

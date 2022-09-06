@@ -9,7 +9,7 @@ export default function UserItemShow(props) {
   const params = useParams()
 
   function fetchItem() {
-    fetch(`http://localhost:3000/items/${params.id}`, {
+    fetch(`https://marketplace-app-cl.herokuapp.com/items/${params.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export default function UserItemShow(props) {
   }, [])
 
   function deleteItem() {
-    fetch(`http://localhost:3000/items/${params.id}`, {
+    fetch(`https://marketplace-app-cl.herokuapp.com/items/${params.id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

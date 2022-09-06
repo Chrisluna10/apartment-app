@@ -17,7 +17,7 @@ export default function Header(props) {
   const navigate = useNavigate()
 
   function userFetch() {
-    fetch("http://localhost:3000/current_user", {
+    fetch("https://marketplace-app-cl.herokuapp.com/current_user", {
       method: "GET",
       credentials: "include",
       mode: "cors",
