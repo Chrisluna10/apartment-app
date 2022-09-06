@@ -60,3 +60,4 @@ gem "bootstrap", "~> 5.1"
 gem 'active_model_serializers'
 gem 'ransack'
 gem 'net-smtp'
+gem "aws-sdk-s3", require: false
