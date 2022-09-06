@@ -3,6 +3,7 @@ import { Button, Grid, TextField, Typography, Modal, Box } from "@mui/material"
 import { Formik } from "formik"
 import React, { useState } from "react"
 import { useNavigate } from "react-router"
+import {localhost, heroku} from "../../fetch-urls"
 
 const style = {
   position: "absolute",
@@ -84,7 +85,7 @@ export default function RegistrationModal(props) {
   //   return false
   // }
   function register() {
-    fetch("https://marketplace-app-cl.herokuapp.com/users", {
+    fetch(`${heroku}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

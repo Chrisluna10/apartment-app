@@ -2,12 +2,13 @@ import { Button, Grid, TextField, Typography } from "@mui/material"
 import * as Yup from "yup"
 import { Formik } from "formik"
 import React, { useState, useEffect } from "react"
+import {localhost, heroku} from "../../fetch-urls"
 
 export default function Account() {
   const [user, setUser] = useState({})
 
   function userFetch() {
-    fetch("https://marketplace-app-cl.herokuapp.com/current_user", {
+    fetch(`${heroku}/current_user`, {
       method: "GET",
       credentials: "include",
       mode: "cors",
@@ -24,7 +25,7 @@ export default function Account() {
   }, [])
 
   function userEdit(values) {
-    fetch("https://marketplace-app-cl.herokuapp.com/users", {
+    fetch(`${heroku}/users`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -21,12 +21,13 @@ import ClothingShoesAccessories from "./pages/categories/ClothingShoesAccessorie
 import Wedding from "./pages/categories/Wedding"
 import BabyAndKids from "./pages/categories/BabyAndKids"
 import Account from "./pages/Account"
+import {localhost, heroku} from "../fetch-urls"
 
 export default function App(props) {
   const [items, setItems] = useState([])
   
   function itemIndex() {
-    fetch("http://https://marketplace-app-cl.herokuapp.com/items", {
+    fetch(`${heroku}/items`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

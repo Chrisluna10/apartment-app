@@ -10,6 +10,7 @@ import {
 } from "@mui/material"
 import { useNavigate } from "react-router"
 import { useParams } from "react-router-dom"
+import {localhost, heroku} from "../../fetch-urls"
 
 // commented out code will be to show similar items to the one that is being rendered.
 
@@ -24,7 +25,7 @@ export default function Item(props) {
   const params = useParams()
 
   function fetchItem() {
-    fetch(`https://marketplace-app-cl.herokuapp.com/items/${params.id}`, {
+    fetch(`${heroku}/items/${params.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

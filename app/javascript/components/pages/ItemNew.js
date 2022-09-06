@@ -10,6 +10,7 @@ import {
 import { Formik } from "formik"
 import { useNavigate } from "react-router-dom"
 import React, { useState } from "react"
+import {localhost, heroku} from "../../fetch-urls"
 
 const textFieldStyle = {
   paddingTop: "20px",
@@ -71,7 +72,7 @@ export default function ItemNew() {
     formData.append("[item]description", description)
     formData.append("[item]image", image)
 
-    fetch("https://marketplace-app-cl.herokuapp.com/items", {
+    fetch(`${heroku}/items`, {
       method: "POST",
       body: formData,
     })
