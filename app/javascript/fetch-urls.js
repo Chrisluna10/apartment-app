@@ -1,4 +1,4 @@
-const heroku = "http://https://marketplace-app-cl.herokuapp.com"
+const heroku = "https://marketplace-app-cl.herokuapp.com"
 
 const localhost = "http://localhost:3000"
 
