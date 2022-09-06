@@ -26,7 +26,7 @@ export default function App(props) {
   const [items, setItems] = useState([])
   
   function itemIndex() {
-    fetch("http://localhost:3000/items", {
+    fetch("http://https://marketplace-app-cl.herokuapp.com/items", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -8,6 +8,7 @@ import {
   CardContent,
   Grid,
 } from "@mui/material"
+// import image from "../../assets/no_image.webp"
 
 const styles = {
   cardAction: {
@@ -45,7 +46,7 @@ export default function Home(props) {
               <CardActionArea onClick={() => handleClick(item)}>
                 <img src={item.image_url} style={{
                   maxHeight: 150,
-                  maxWidth: 180
+                  maxWidth: 180 
                 }}/>
                 <CardContent>
                   <Grid

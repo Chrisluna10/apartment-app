@@ -6,55 +6,45 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-users = [
-  {
-    username: 'joerandom1',
-    email: 'testing@test.com',
-    password: 'testing123',
-    password_confirmation: 'testing123'
-  },
-  {
-    username: 'joerandom2',
-    email: 'testing@test123.com',
-    password: 'testing123',
-    password_confirmation: 'testing123'
-  },
-  {
-    username: 'joerandom3',
-    email: 'test@test.com',
-    password: 'testing123',
-    password_confirmation: 'testing123'
-  }
-]
 
-users.each do |attribute|
-  User.create attribute
+10.times do
+  user = User.create!(
+    username: Faker::Internet.username(specifier: 6..12),
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
+  )
+  
+
+    3.times do
+    item = Item.create!(
+      user: user,
+      name: Faker::Lorem.words.join(""),
+      category: "Electronics & Media",
+      price: Faker::Number.between(from: 5, to:500),
+      description: Faker::Lorem.paragraphs.join("\n")
+      )
+    end
+    3.times do
+      item = Item.create!(
+        user: user,
+        name: Faker::Lorem.words.join(""),
+        category: "Home & Garden",
+        price: Faker::Number.between(from: 5, to:500),
+        description: Faker::Lorem.paragraphs.join("\n")
+        )
+      end
+      3.times do
+        item = Item.create!(
+          user: user,
+          name: Faker::Lorem.words.join(""),
+          category: "Clothing, Shoes & Accessories",
+          price: Faker::Number.between(from: 5, to:500),
+          description: Faker::Lorem.paragraphs.join("\n")
+          )
+        end
 end
 
-items = [
-  {
-    name: '123 Street',
-    category: 'SD',
-    price: 'CA',
-    description: 'Joe',
-  },
-  {
-    name: '123 Street',
-    category: 'SD',
-    price: 'CA',
-    description: 'Joe',
-  }, 
-  {
-    name: '123 Street',
-    category: 'SD',
-    price: 'CA',
-    description: 'Joe',
-  },
-  {
-    name: '123 Street',
-    category: 'SD',
-    price: 'CA',
-    description: 'Joe',
-  },
-]
-end
+# users.each do |attribute|
+#   User.create attribute
+# end
+
