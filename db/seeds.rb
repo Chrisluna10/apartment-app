@@ -51,7 +51,7 @@
     price: Faker::Number.between(from: 5000, to: 40_000),
     description: Faker::Lorem.paragraphs.join("\n")
   )
-  item.image.attach(io: File.open('app/javascript/assets/truck.jpg'), filename: 'truck.jpg')
+  item.image.attach(io: File.open('app/javascript/assets/truck.jpeg'), filename: 'truck.jpg')
 
   item = Item.create!(
     user:,
