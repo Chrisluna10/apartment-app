@@ -61,6 +61,7 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "apartment_app_production"
+  Rails.application.routes.default_url_options[:host] = 'https://marketplace-app-cl.herokuapp.com/'
 
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options ={

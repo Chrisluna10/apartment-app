@@ -34,7 +34,8 @@ export default function App(props) {
       },
     })
       .then((res) => res.json())
-      .then((itemsArray) => setItems(itemsArray))
+      .then((res) => console.log(res))
+      // .then((itemsArray) => setItems(itemsArray))
       .catch((err) => console.log(err))
   }
   
