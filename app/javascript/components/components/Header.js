@@ -4,6 +4,7 @@ import { Button, Grid, Typography, Box } from "@mui/material"
 import NavMenu from "./NavMenu"
 import LoginModal from "./LoginModal"
 import SearchBar from "./SearchBar"
+import {localhost, heroku} from "../../fetch-urls"
 
 const styles = {
   linkStyle: {
@@ -17,7 +18,7 @@ export default function Header(props) {
   const navigate = useNavigate()
 
   function userFetch() {
-    fetch("https://marketplace-app-cl.herokuapp.com/current_user", {
+    fetch(`${heroku}/current_user`, {
       method: "GET",
       credentials: "include",
       mode: "cors",

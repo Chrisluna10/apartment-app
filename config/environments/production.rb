@@ -38,7 +38,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -61,11 +61,14 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "apartment_app_production"
+  Rails.application.routes.default_url_options[:host] = 'https://marketplace-app-cl.herokuapp.com/'
 
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options ={
     host: 'https://marketplace-app-cl.herokuapp.com/'
   }
+
+  config.secret_key_base = ENV['SECRET_KEY_BASE']
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

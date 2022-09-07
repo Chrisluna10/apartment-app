@@ -3,6 +3,7 @@ import { Formik } from "formik"
 import { useNavigate } from "react-router-dom"
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
+import {localhost, heroku} from "../../fetch-urls"
 
 export default function ItemEdit() {
   const navigate = useNavigate()
@@ -10,7 +11,7 @@ export default function ItemEdit() {
   const params = useParams()
 
   function fetchItem() {
-    fetch(`https://marketplace-app-cl.herokuapp.com/items/${params.id}`, {
+    fetch(`${heroku}/items/${params.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +27,7 @@ export default function ItemEdit() {
   }, [])
 
   function editItem(values) {
-    fetch(`https://marketplace-app-cl.herokuapp.com/items/${params.id}`, {
+    fetch(`${heroku}/items/${params.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

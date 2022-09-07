@@ -23,6 +23,7 @@
       price: Faker::Number.between(from: 5, to:500),
       description: Faker::Lorem.paragraphs.join("\n")
       )
+      @item.images.attach(io: File.open('app/javascript/assets/no_image.webp'), filename: 'no_image.webp')
     end
     3.times do
       item = Item.create!(
@@ -32,6 +33,7 @@
         price: Faker::Number.between(from: 5, to:500),
         description: Faker::Lorem.paragraphs.join("\n")
         )
+        @item.images.attach(io: File.open('app/javascript/assets/no_image.webp'), filename: 'no_image.webp')
       end
       3.times do
         item = Item.create!(
@@ -41,6 +43,7 @@
           price: Faker::Number.between(from: 5, to:500),
           description: Faker::Lorem.paragraphs.join("\n")
           )
+          @item.images.attach(io: File.open('app/javascript/assets/no_image.webp'), filename: 'no_image.webp')
         end
 end
 

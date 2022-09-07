@@ -3,6 +3,7 @@ import Button from "@mui/material/Button"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
 import { useNavigate } from "react-router-dom"
+import {localhost, heroku} from "../../fetch-urls"
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -35,7 +36,7 @@ export default function BasicMenu() {
   }
 
   function signOut() {
-    fetch("https://marketplace-app-cl.herokuapp.com/users/sign_out", {
+    fetch(`${heroku}/users/sign_out`, {
       method: "GET",
       credentials: "include",
       headers: {

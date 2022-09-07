@@ -4,6 +4,7 @@ import { Formik } from "formik"
 import React, { useState } from "react"
 import { useNavigate } from "react-router"
 import RegistrationModal from "../components/RegistrationModal"
+import {localhost, heroku} from "../../fetch-urls"
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().label("Email").required("Please enter your email"),
@@ -33,7 +34,7 @@ export default function UserLogin(props) {
   const [password, setPassword] = useState("")
 
   function login() {
-    fetch(`https://marketplace-app-cl.herokuapp.com/users/sign_in`, {
+    fetch(`${heroku}/users/sign_in`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
