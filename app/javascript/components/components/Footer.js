@@ -59,13 +59,19 @@ export default function Footer() {
       >
         <CustomButton
           target="_blank"
-          href="https://github.com/Chrisluna10/marketplace-app"
+          onClick={() =>
+            window.location.assign(
+              "https://github.com/Chrisluna10/marketplace-app"
+            )
+          }
         >
-          Github for this code
+          Code for this Project
         </CustomButton>
         <CustomButton
           target="_blank"
-          href="https://github.com/Chrisluna10/"
+          onClick={() =>
+            window.location.assign("https://github.com/Chrisluna10/")
+          }
         >
           Chris Luna's Github
         </CustomButton>
@@ -90,11 +96,22 @@ export default function Footer() {
         alignItems="center"
         direction="column"
       >
-        <CustomButton href="https://www.linkedin.com/in/chris-luna-09a755219/">
+        <CustomButton
+          onClick={() =>
+            window.location.assign(
+              "https://www.linkedin.com/in/chris-luna-09a755219/"
+            )
+          }
+        >
           LinkedIn
         </CustomButton>
-        <CustomButton href="">Portfolio</CustomButton>
-        
+        <CustomButton
+          onClick={() =>
+            window.location.assign("https://chrisluna10.github.io/")
+          }
+        >
+          Portfolio
+        </CustomButton>
       </Grid>
     </Grid>
   )
