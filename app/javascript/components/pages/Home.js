@@ -45,8 +45,8 @@ export default function Home(props) {
             <Card style={styles.cardStyle}>
               <CardActionArea onClick={() => handleClick(item)}>
                 <img src={item.image_url} style={{
-                  maxHeight: 150,
-                  maxWidth: 180 
+                  height: 150,
+                  width: 180 
                 }}/>
                 <CardContent>
                   <Grid
