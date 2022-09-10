@@ -6,7 +6,7 @@ export default function indexHook() {
 
   useEffect(() => {
     async function itemIndex() {
-      const response = await fetch(`${localhost}/items`, {
+      const response = await fetch(`${heroku}/items`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
