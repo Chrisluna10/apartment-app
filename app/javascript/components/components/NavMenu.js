@@ -71,6 +71,7 @@ export default function BasicMenu() {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
+        onClick={handleClose}
         onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",

@@ -21,48 +21,47 @@ import ClothingShoesAccessories from "./pages/categories/ClothingShoesAccessorie
 import Wedding from "./pages/categories/Wedding"
 import BabyAndKids from "./pages/categories/BabyAndKids"
 import Account from "./pages/Account"
-import {localhost, heroku} from "../fetch-urls"
+import indexHook from "./customHooks/indexHook"
 
 export default function App(props) {
-  const [items, setItems] = useState([])
-  
-  function itemIndex() {
-    fetch(`${heroku}/items`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((itemsArray) => setItems(itemsArray))
-      .catch((err) => console.log(err))
-  }
-  
-  useEffect(() => {
-    itemIndex()
-  }, [])
+  const [items, setItems] = indexHook()
 
   return (
     <Router>
-      <Header {...props}/>
+      <Header {...props} />
       <Routes>
-        <Route path="/" element={<Home {...props} items={items}/>} />
+        <Route path="/" element={<Home {...props} items={items} />} />
         <Route path="item/:id" element={<Item />} />
         <Route path="/itemnew" element={<ItemNew {...props} />} />
         <Route path="selling" element={<Selling />} />
         <Route path="selling/item/:id" element={<UserItemShow />} />
         <Route path="edititem/:id" element={<ItemEdit />} />
-        <Route path="vehicles" element={<Vehicles items={items}/>} />
-        <Route path="home&garden" element={<HomeAndGarden items={items}/>} />
-        <Route path="petsupplies" element={<PetSupplies items={items}/>} />
-        <Route path="wedding" element={<Wedding items={items}/>} />
-        <Route path="toys" element={<ToysAndGames items={items}/>} />
-        <Route path="sports&outdoors" element={<SportsAndOutdoors items={items}/>} />
-        <Route path="health&beauty" element={<HealthAndBeauty items={items}/>} />
-        <Route path="electronics&media" element={<ElectronicsAndMedia items={items}/>} />
-        <Route path="collectibles&art" element={<CollectiblesAndArt items={items}/>} />
-        <Route path="clothing" element={<ClothingShoesAccessories items={items}/>} />
-        <Route path="baby&kids" element={<BabyAndKids items={items}/>} />
+        <Route path="vehicles" element={<Vehicles items={items} />} />
+        <Route path="home&garden" element={<HomeAndGarden items={items} />} />
+        <Route path="petsupplies" element={<PetSupplies items={items} />} />
+        <Route path="wedding" element={<Wedding items={items} />} />
+        <Route path="toys" element={<ToysAndGames items={items} />} />
+        <Route
+          path="sports&outdoors"
+          element={<SportsAndOutdoors items={items} />}
+        />
+        <Route
+          path="health&beauty"
+          element={<HealthAndBeauty items={items} />}
+        />
+        <Route
+          path="electronics&media"
+          element={<ElectronicsAndMedia items={items} />}
+        />
+        <Route
+          path="collectibles&art"
+          element={<CollectiblesAndArt items={items} />}
+        />
+        <Route
+          path="clothing"
+          element={<ClothingShoesAccessories items={items} />}
+        />
+        <Route path="baby&kids" element={<BabyAndKids items={items} />} />
         <Route path="account" element={<Account />} />
       </Routes>
       <Footer />
