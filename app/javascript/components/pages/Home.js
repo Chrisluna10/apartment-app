@@ -41,7 +41,7 @@ export default function Home(props) {
 
   function initialState() {
     setItems(props.items)
-    setName('Recent First(Default')
+    setName('Recent First(Default)')
   }
 
   function handlePriceAscending() {
