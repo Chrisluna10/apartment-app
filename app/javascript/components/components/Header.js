@@ -5,6 +5,7 @@ import NavMenu from "./NavMenu"
 import LoginModal from "./LoginModal"
 import SearchBar from "./SearchBar"
 import {localhost, heroku} from "../../fetch-urls"
+import offerup from "../../assets/offerup.png"
 
 const styles = {
   linkStyle: {
@@ -65,9 +66,9 @@ export default function Header(props) {
             xs={6}
             justifyContent="flex-start"
           >
-            <Grid item padding={1.5}>
+            <Grid item padding={1.5} paddingLeft={2.5}>
               <Link to="/" style={styles.linkStyle}>
-                <Typography color="#00a87e" fontSize="20px" fontWeight="bold">Marketplace App</Typography>
+                <img src={offerup} height={40} width={130}></img>
               </Link>
             </Grid>
             {/* <Grid item padding={1.5}>

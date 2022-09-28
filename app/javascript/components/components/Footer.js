@@ -85,7 +85,7 @@ export default function Footer() {
         direction="column"
       >
         <Typography style={textStyle}>
-          Created by: Software Developer Chris Luna
+          Created by: Chris Luna
         </Typography>
       </Grid>
       <Grid
