@@ -68,7 +68,7 @@ export default function Header(props) {
           >
             <Grid item padding={1.5} paddingLeft={2.5}>
               <Link to="/" style={styles.linkStyle}>
-                <img src={offerup} height={40} width={130}></img>
+                <img src={offerup} height={35} width={118}></img>
               </Link>
             </Grid>
             {/* <Grid item padding={1.5}>

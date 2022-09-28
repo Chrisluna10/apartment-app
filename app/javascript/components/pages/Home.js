@@ -9,15 +9,50 @@ import {
   Grid,
   Button,
 } from "@mui/material"
+import ButtonUnstyled, { buttonUnstyledClasses } from "@mui/base/ButtonUnstyled"
+import { styled } from "@mui/system"
 import Sorting from "../components/Sorting"
 import indexHook from "../customHooks/indexHook"
-// import image from "../../assets/no_image.webp"
+import offerUpLogo from "../../assets/offerup-logo.png"
+
+const CustomButton = styled(ButtonUnstyled)`
+  font-family: IBM Plex Sans, sans-serif;
+  font-weight: bold;
+  font-size: 0.875rem;
+  background-color: #00a87e;
+  border-radius: 18px;
+  height: 40px;
+  width: 110px;
+  color: white;
+  transition: all 150ms ease;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background-color: #00a87e;
+  }
+
+  &.${buttonUnstyledClasses.active} {
+    background-color: #00a87e;
+  }
+
+  &.${buttonUnstyledClasses.focusVisible} {
+    box-shadow: 0 4px 20px 0 rgba(61, 71, 82, 0.1),
+      0 0 0 5px rgba(0, 127, 255, 0.5);
+    outline: none;
+  }
+
+  &.${buttonUnstyledClasses.disabled} {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`
 
 const styles = {
   cardAction: {
     "&:hover": {
       opacity: 0,
-      background: "white"
+      background: "white",
     },
   },
   cardStyle: {
@@ -30,6 +65,10 @@ const styles = {
   gridContainer: {
     paddingLeft: "15px",
     paddingRight: "5px",
+  },
+  typography: {
+    fontFamily: "Helvetica Neue",
+    fontWeight: "bold",
   },
 }
 
@@ -71,6 +110,30 @@ export default function Home(props) {
 
   return (
     <Grid container columns={14} style={styles.gridContainer}>
+      <Grid
+        container
+        item
+        justifyContent="center"
+        alignContent="center"
+        height="125px"
+      >
+        <Grid item paddingRight={2} paddingTop={0.5}>
+          <img src={offerUpLogo} height="25px" width="25px" paddingRight={2} />
+        </Grid>
+        <Grid item paddingTop={0.5}>
+          <Typography style={styles.typography} fontSize="20px" color="#00a87e">
+            The Simpler way to buy and sell locally!
+          </Typography>
+        </Grid>
+        <Grid item paddingLeft={2} paddingBottom={6} height="60px">
+          <CustomButton>
+            <Typography style={styles.typography} fontSize="15px">
+              {" "}
+              Get the app
+            </Typography>
+          </CustomButton>
+        </Grid>
+      </Grid>
       <Grid container item justifyContent="flex-end" paddingRight={2}>
         <Sorting
           initialState={initialState}
@@ -85,9 +148,7 @@ export default function Home(props) {
             <Card style={styles.cardStyle}>
               <CardActionArea
                 onClick={() => handleClick(item)}
-                style={
-                  styles.cardAction
-              }
+                style={styles.cardAction}
               >
                 <img
                   src={item.image_url}
