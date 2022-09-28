@@ -15,14 +15,17 @@ import indexHook from "../customHooks/indexHook"
 
 const styles = {
   cardAction: {
-    "&:hover $focusHighlight": {
+    "&:hover": {
       opacity: 0,
+      background: "white"
     },
   },
   cardStyle: {
     display: "block",
     height: 250,
     maxWidth: 175,
+    border: "none",
+    boxShadow: "none",
   },
   gridContainer: {
     paddingLeft: "15px",
@@ -33,7 +36,7 @@ const styles = {
 export default function Home(props) {
   const navigate = useNavigate()
   const [items, setItems] = indexHook()
-  const [name, setName] = useState('Recent First(Default)')
+  const [name, setName] = useState("Recent First(Default)")
 
   useEffect(() => {
     setItems(props.items)
@@ -41,7 +44,7 @@ export default function Home(props) {
 
   function initialState() {
     setItems(props.items)
-    setName('Recent First(Default)')
+    setName("Recent First(Default)")
   }
 
   function handlePriceAscending() {
@@ -49,7 +52,7 @@ export default function Home(props) {
       return a.price > b.price ? 1 : -1
     })
     setItems(priceAscending)
-    setName('Price: Low to High')
+    setName("Price: Low to High")
   }
 
   function handlePriceDescending() {
@@ -57,7 +60,7 @@ export default function Home(props) {
       return a.price < b.price ? 1 : -1
     })
     setItems(priceDescending)
-    setName('Price: High to Low ')
+    setName("Price: High to Low ")
   }
 
   const handleClick = (item) => {
@@ -80,7 +83,12 @@ export default function Home(props) {
         return (
           <Grid item xs={7} sm={3.5} md={2} padding={0.8} key={item.id}>
             <Card style={styles.cardStyle}>
-              <CardActionArea onClick={() => handleClick(item)}>
+              <CardActionArea
+                onClick={() => handleClick(item)}
+                style={
+                  styles.cardAction
+              }
+              >
                 <img
                   src={item.image_url}
                   style={{

@@ -1,69 +1,69 @@
 class ItemsController < ApplicationController
-
   def userindex
     items = current_user.items.all
     render json: items
   end
 
-  def index 
+  def index
     items = Item.all
     render json: items
-end
+  end
 
   def show
     item = Item.find(params[:id])
-     render json: item
+    render json: item
   end
 
-def logged_in
-  if current_user
+  def logged_in
+    if current_user
       render json: {
-          logged_in: true,
-          user: current_user        }
-  else 
-      render json: {
-          logged_in: false
+        logged_in: true,
+        user: current_user
       }
-  end
-end
-
-
-def create
-    item = current_user.items.create(item_params)
-    if item.valid? 
-        render json: {
-          item: item,
-          status: "created"
-        }
     else
-    render json: item.errors, status: 422
+      render json: {
+        logged_in: false
+      }
+    end
+  end
+
+  def create
+    item = current_user.items.create(item_params)
+    if item.valid?
+      render json: {
+        item:,
+        status: 'created'
+      }
+    else
+      render json: item.errors, status: 422
 
     end
-end
+  end
 
-def update
+  def update
     item = Item.find(params[:id])
     item.update(item_params)
     render json: {
-      item: item,
-      status: "created"
+      item:,
+      status: 'created'
     }
-end
+  end
 
- def destroy
+  def destroy
     item = Item.find(params[:id])
     if current_user.id == item.user_id
       item.destroy
       render json: {
-        status: "destroyed"
+        status: 'destroyed'
       }
     else
       head 401
     end
   end
 
-private
-def item_params
+  private
+
+  def item_params
     params.require(:item).permit(:name, :image, :category, :price, :description)
-end
+  end
 end

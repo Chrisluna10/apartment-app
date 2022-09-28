@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import {
-  Typography,
-  Card,
-  CardActionArea,
-  CardContent,
-  Grid,
   Button,
 } from "@mui/material"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
 import { useNavigate } from "react-router-dom"
-import { localhost, heroku } from "../../fetch-urls"
 
 export default function Sorting({
   initialState,
