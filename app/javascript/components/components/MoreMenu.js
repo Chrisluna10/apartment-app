@@ -3,7 +3,31 @@ import Button from "@mui/material/Button"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
 import { useNavigate } from "react-router-dom"
-import {localhost, heroku} from "../../fetch-urls"
+import { localhost, heroku } from "../../fetch-urls"
+import { styled } from "@mui/system"
+import { Typography } from "@mui/material"
+
+const blue = {
+  100: "#DAECFF",
+  200: "#99CCF3",
+  400: "#3399FF",
+  500: "#007FFF",
+  600: "#0072E5",
+  900: "#003A75",
+}
+
+const grey = {
+  50: "#f6f8fa",
+  100: "#eaeef2",
+  200: "#d0d7de",
+  300: "#afb8c1",
+  400: "#8c959f",
+  500: "#6e7781",
+  600: "#57606a",
+  700: "#424a53",
+  800: "#32383f",
+  900: "#24292f",
+}
 
 export default function NavMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -16,43 +40,26 @@ export default function NavMenu() {
     setAnchorEl(null)
   }
 
-  const accountRoute = () => {
-    navigate("/account")
+  const businessEquipmentRoute = () => {
+    navigate("/businessequipment")
   }
 
-  const sellingRoute = () => {
-    navigate("/selling")
-  }
-
-  const addItemRoute = () => {
-    navigate("/itemnew")
+  const ticketsRoute = () => {
+    navigate("/tickets")
   }
 
   const buttonStyle = {
+    fontFamily: "IBM Plex Sans, sans-serif",
+    fontSize: "0.875rem",
+    borderRadius: "12px",
+    lineHeight: "1.5",
+    background: "none",
+    textTransform: "none",
+    border: "none",
+    color: `black`,
     "&:hover": {
       backgroundColor: "transparent",
     },
-    color: "black",
-  }
-
-  function signOut() {
-    fetch(`${heroku}/users/sign_out`, {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.status === "signed_out") {
-          alert("Signed Out")
-          navigate("/")
-          window.location.reload(false)
-        } else {
-          alert("user not signed out")
-        }
-      })
   }
 
   return (
@@ -65,7 +72,7 @@ export default function NavMenu() {
         onClick={handleClick}
         sx={{ ...buttonStyle }}
       >
-        Account
+        More
       </Button>
       <Menu
         id="basic-menu"
@@ -77,10 +84,8 @@ export default function NavMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={accountRoute}>Account</MenuItem>
-        <MenuItem onClick={sellingRoute}>Selling</MenuItem>
-        <MenuItem onClick={addItemRoute}>Add Item</MenuItem>
-        <MenuItem onClick={signOut}>Logout</MenuItem>
+        <MenuItem onClick={businessEquipmentRoute}>Business Equipment</MenuItem>
+        <MenuItem onClick={ticketsRoute}>Tickets</MenuItem>
       </Menu>
     </div>
   )

@@ -6,6 +6,7 @@ import LoginModal from "./LoginModal"
 import SearchBar from "./SearchBar"
 import {localhost, heroku} from "../../fetch-urls"
 import offerup from "../../assets/offerup.png"
+import MoreMenu from "../components/MoreMenu"
 
 const styles = {
   linkStyle: {
@@ -165,9 +166,7 @@ export default function Header(props) {
             </Link>
           </Grid>
           <Grid item padding={1} paddingTop={.5} paddingBottom={.5}>
-            <Link to="/vehicles" style={styles.linkStyle}>
-              <Typography fontSize="14px">More</Typography>
-            </Link>
+           <MoreMenu />
           </Grid>
         </Grid>
       </Grid>
