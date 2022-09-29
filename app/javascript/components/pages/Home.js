@@ -115,7 +115,7 @@ export default function Home(props) {
         item
         justifyContent="center"
         alignContent="center"
-        height="125px"
+        height="100px"
       >
         <Grid item paddingRight={2} paddingTop={0.5}>
           <img src={offerUpLogo} height="25px" width="25px" paddingRight={2} />
