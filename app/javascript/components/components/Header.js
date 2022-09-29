@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { Button, Grid, Typography, Box } from "@mui/material"
 import NavMenu from "./NavMenu"
 import LoginModal from "./LoginModal"
+import AuthModal from "./AuthModal"
 import SearchBar from "./SearchBar"
 import {localhost, heroku} from "../../fetch-urls"
 import offerup from "../../assets/offerup.png"
@@ -87,6 +88,9 @@ export default function Header(props) {
           >
             <Grid item padding={0.5}>
               {!logged_in && <LoginModal />}
+            </Grid>
+            <Grid item padding={0.5}>
+              {!logged_in && <AuthModal />}
             </Grid>
             <Grid item padding={0.5}>
               {logged_in && (
