@@ -36,7 +36,7 @@ export default function NavMenu() {
   }
 
   function signOut() {
-    fetch(`${heroku}/users/sign_out`, {
+    fetch(`${localhost}/users/sign_out`, {
       method: "GET",
       credentials: "include",
       headers: {

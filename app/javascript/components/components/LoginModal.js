@@ -35,7 +35,7 @@ export default function NestedModal() {
   }
 
   return (
-    <div>
+    <>
       <Button onClick={handleOpen} sx={{ ...buttonStyle }}>
         Log in
       </Button>
@@ -49,6 +49,6 @@ export default function NestedModal() {
           <Login />
         </Box>
       </Modal>
-    </div>
+    </>
   )
 }

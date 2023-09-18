@@ -21,7 +21,7 @@ export default function Header(props) {
   const navigate = useNavigate()
 
   function userFetch() {
-    fetch(`${heroku}/current_user`, {
+    fetch(`${localhost}/current_user`, {
       method: "GET",
       credentials: "include",
       mode: "cors",

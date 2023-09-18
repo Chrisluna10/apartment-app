@@ -11,7 +11,7 @@ export default function ItemEdit() {
   const params = useParams()
 
   function fetchItem() {
-    fetch(`${heroku}/items/${params.id}`, {
+    fetch(`${localhost}/items/${params.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default function ItemEdit() {
   }, [])
 
   function editItem(values) {
-    fetch(`${heroku}/items/${params.id}`, {
+    fetch(`${localhost}/items/${params.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

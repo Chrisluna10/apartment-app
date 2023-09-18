@@ -72,7 +72,7 @@ export default function ItemNew() {
     formData.append("[item]description", description)
     formData.append("[item]image", image)
 
-    fetch(`${heroku}/items`, {
+    fetch(`${localhost}/items`, {
       method: "POST",
       body: formData,
     })

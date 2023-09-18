@@ -7,6 +7,7 @@ import { localhost, heroku } from "../../fetch-urls"
 import ButtonUnstyled, { buttonUnstyledClasses } from "@mui/base/ButtonUnstyled"
 import { styled } from "@mui/system"
 import offerup from "../../assets/offerup.png"
+import Login from "../components/LoginModal"
 
 const CustomButton = styled(ButtonUnstyled)`
   font-family: IBM Plex Sans, sans-serif;
@@ -62,6 +63,7 @@ const buttonStyle = {
 }
 
 export default function RegistrationModal(props) {
+  const navigate = useNavigate()
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => {
     setOpen(true)
@@ -70,13 +72,13 @@ export default function RegistrationModal(props) {
     setOpen(false)
   }
 
+
   return (
     <>
       <Button onClick={handleOpen} sx={{ ...buttonStyle }}>
         Register
       </Button>
       <Modal
-        hideBackdrop
         open={open}
         onClose={handleClose}
         aria-labelledby="child-modal-title"

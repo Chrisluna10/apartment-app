@@ -34,7 +34,7 @@ export default function UserLogin(props) {
   const [password, setPassword] = useState("")
 
   function login() {
-    fetch(`${heroku}/users/sign_in`, {
+    fetch(`${localhost}/users/sign_in`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

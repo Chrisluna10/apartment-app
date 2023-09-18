@@ -8,7 +8,7 @@ export default function Account() {
   const [user, setUser] = useState({})
 
   function userFetch() {
-    fetch(`${heroku}/current_user`, {
+    fetch(`${localhost}/current_user`, {
       method: "GET",
       credentials: "include",
       mode: "cors",

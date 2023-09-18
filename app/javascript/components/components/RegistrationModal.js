@@ -85,7 +85,7 @@ export default function RegistrationModal(props) {
   //   return false
   // }
   function register() {
-    fetch(`${heroku}/users`, {
+    fetch(`${localhost}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export default function RegistrationModal(props) {
       }),
     })
       .then((res) => res.json())
-      // .then((res) => console.log(res.status))
+      // .then((res) => console.log("status1", res.status))
       .then((res) => {
         if (res.status === "created") {
           alert("Account added.")
